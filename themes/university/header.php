@@ -36,9 +36,9 @@
 
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'wp-bootstrap-starter' ); ?></a>
- 	<header id="masthead" class="site-header navbar-static-top <?php echo wp_bootstrap_starter_bg_class(); ?>" role="banner">
+ 	<header id="masthead" class="py-3 site-header navbar-static-top <?php echo wp_bootstrap_starter_bg_class(); ?>" role="banner">
         <div class="container">
-            <nav class="navbar navbar-expand-xl p-0">
+            <nav class="navbar navbar-expand-xl justify-content-between p-0">
                 <div class="navbar-brand">
                     <?php if ( get_theme_mod( 'wp_bootstrap_starter_logo' ) ): ?>
                         <a href="<?php echo esc_url( home_url( '/' )); ?>">
@@ -49,9 +49,9 @@
                     <?php endif; ?>
 
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> -->
 
                 <?php
 
@@ -72,11 +72,12 @@ echo is_page_template( 'blank-page.php' );
                 'walker'          => new wp_bootstrap_navwalker()
                 ));
                 ?>
+                <div>
 
 <a href="#" class="btn btn-primary float-left push-right">Login</a>
 <a href="#" class="mx-2 btn btn-info btn--dark-orange float-left">Sign Up</a>
 <span class="search-trigger js-search-trigger"><i class="text-dark fa fa-search" aria-hidden="true"></i></span>
-
+            </div>
             </nav>
         </div>
 	</header><!-- #masthead -->
