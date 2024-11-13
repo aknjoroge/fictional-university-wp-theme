@@ -112,6 +112,10 @@ li {
   font-size: 19px;
 }
 
+.site-title:hover {
+  text-decoration: none;
+  color: var(--nav-active-link) !important;
+}
 .navbar-static-top {
   position: absolute;
   top: 0;
@@ -141,6 +145,57 @@ li {
   z-index: 2;
   height: 600px;
 }
+
+.inner-page-banner-content {
+  height: 300px;
+}
+
+.event-date {
+  background: #0d3b66;
+  width: 80px;
+  height: auto;
+  padding: 25px 0px 10px 0px;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.blog-date {
+  background: #f4d35e;
+}
+
+.event-date span {
+  display: block;
+}
+
+.event-date .month {
+  color: white;
+  line-height: 0px;
+  text-transform: uppercase;
+}
+.event-date .day {
+  font-size: 30px;
+  color: white;
+  font-weight: 800;
+}
+
+.blog-col {
+  background: #faf0ca;
+}
+.blog-col .container {
+  background: white;
+}
+/* 
+
+
+
+.event-summary a:hover {
+  text-decoration: none;
+}
+ */
 
 /* .site-footer {
   position: fixed;

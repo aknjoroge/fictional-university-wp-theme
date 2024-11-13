@@ -14,24 +14,35 @@
 
 get_header(); ?>
 
-	<section id="primary" class="content-area col-sm-12 col-lg-8">
-		<div id="main" class="site-main" role="main">
+<div class="page-banner">
+    <div class="page-banner-image"
+        style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/ocean.jpg' ) ?>)">
+    </div>
 
-			<?php
-			while ( have_posts() ) : the_post();
+    <div
+        class=" d-flex  justify-content-end flex-column page-banner-content inner-page-banner-content text-center text-white py-5">
+		<div class="text-left container">
 
-				get_template_part( 'template-parts/content', 'page' );
+			<h1>Our History!</h1>
+			<h3>Learn how the school of your dreams got started.</h3>
+		</div>
+		</div>
 
-                // If comments are open or we have at least one comment, load up the comment template.
-                if ( comments_open() || get_comments_number() ) :
-                    comments_template();
-                endif;
 
-			endwhile; // End of the loop.
-			?>
+</div>
 
-		</div><!-- #main -->
-	</section><!-- #primary -->
+<div>
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia voluptates vero vel temporibus aliquid possimus, facere accusamus modi. Fugit saepe et autem, laboriosam earum reprehenderit illum odit nobis, consectetur dicta. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos molestiae, tempora alias atque vero officiis sit commodi ipsa vitae impedit odio repellendus doloremque quibusdam quo, ea veniam, ad quod sed.
+
+</div>
+<div class="page-links">
+        <h2 class="page-links__title"><a href="#">About Us</a></h2>
+        <ul class="min-list">
+          <li class="current_page_item"><a href="#">Our History</a></li>
+          <li><a href="#">Our Goals</a></li>
+        </ul>
+      </div>
 
 <?php
 get_sidebar();
