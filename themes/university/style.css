@@ -18,8 +18,8 @@ Tested up to: 5.4
 # Elements
 # Forms
 # Navigation
-	## Links
-	## Menus
+	## Header
+	## Footer
 # Accessibility
 # Alignments
 # Clearings
@@ -83,11 +83,15 @@ li {
   font-weight: 400;
 }
 
+a {
+  color: #000;
+  text-decoration: underline;
+}
 /*--------------------------------------------------------------
 # Navigation
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-## Menu
+## Header
 --------------------------------------------------------------*/
 
 .menu-item .nav-link {
@@ -122,6 +126,32 @@ li {
   z-index: 5;
   left: 0;
   right: 0;
+}
+
+/*--------------------------------------------------------------
+## Footer
+--------------------------------------------------------------*/
+
+.site-footer {
+  background-image: linear-gradient(#fff, #ececec);
+}
+
+.site-footer a {
+  color: #999;
+  text-decoration: none;
+}
+
+.footer-socials ul {
+  list-style: none;
+
+  display: flex;
+  gap: 10px;
+  color: black;
+}
+.footer-socials a {
+  color: black;
+  font-size: 18px;
+  text-decoration: none;
 }
 
 /*--------------------------------------------------------------
@@ -185,19 +215,15 @@ li {
 .blog-col {
   background: #faf0ca;
 }
-.blog-col .container {
-  background: white;
+
+.slider-item {
+  height: 500px;
 }
-/* 
 
-
-
-.event-summary a:hover {
+.slider-item .content {
+  background: #000000b5;
+  height: fit-content;
+}
+.btn {
   text-decoration: none;
 }
- */
-
-/* .site-footer {
-  position: fixed;
-  bottom: 0;
-} */

@@ -72,11 +72,11 @@ echo is_page_template( 'blank-page.php' );
                 'walker'          => new wp_bootstrap_navwalker()
                 ));
                 ?>
-                <div>
+                <div class="d-flex align-items-center">
 
 <a href="#" class="btn btn-primary float-left push-right">Login</a>
 <a href="#" class="mx-2 btn btn-info btn--dark-orange float-left">Sign Up</a>
-<span class="search-trigger js-search-trigger"><i class="text-dark fa fa-search" aria-hidden="true"></i></span>
+<span class="search-trigger js-search-trigger"><i class="text-white fa fa-search" aria-hidden="true"></i></span>
             </div>
             </nav>
         </div>

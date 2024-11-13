@@ -13,79 +13,98 @@
  get_template_part( 'footer-widget' );
 ?>
 
-<footer class="site-footer">
-      <div class="site-footer__inner container container--narrow">
-        <div class="group">
-          <div class="site-footer__col-one">
-            <h1 class="school-logo-text school-logo-text--alt-color">
-              <a href="#"><strong>Fictional</strong> University</a>
-            </h1>
-            <p><a class="site-footer__link" href="#">555.555.5555</a></p>
-          </div>
+<footer class="text-dark pt-5 site-footer">
 
-          <div class="site-footer__col-two-three-group">
-            <div class="site-footer__col-two">
-              <h3 class="headline headline--small">Explore</h3>
-              <nav class="nav-list">
-                <ul>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Programs</a></li>
-                  <li><a href="#">Events</a></li>
-                  <li><a href="#">Campuses</a></li>
-                </ul>
-              </nav>
-            </div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<?php if ( get_theme_mod( 'wp_bootstrap_starter_logo' ) ): ?>
+				<a href="<?php echo esc_url( home_url( '/' )); ?>">
+					<img src="<?php echo esc_url(get_theme_mod( 'wp_bootstrap_starter_logo' )); ?>"
+						alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+				</a>
+				<?php else : ?>
+				<a class="" href="<?php echo esc_url( home_url( '/' )); ?>">
+					<h3>
+						<?php esc_url(bloginfo('name')); ?>
+					</h3>
+				</a>
+				<?php endif; ?>
 
-            <div class="site-footer__col-three">
-              <h3 class="headline headline--small">Learn</h3>
-              <nav class="nav-list">
-                <ul>
-                  <li><a href="#">Legal</a></li>
-                  <li><a href="#">Privacy</a></li>
-                  <li><a href="#">Careers</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+				<p><a href="#">555.555.5555</a></p>
+			</div>
+			<div class="col-md-5">
+				<div class="row">
+					<div class="col-md-6">
+						<h3>Explore</h3>
+						<nav>
+							<ul>
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">Programs</a></li>
+								<li><a href="#">Events</a></li>
+								<li><a href="#">Campuses</a></li>
+							</ul>
+						</nav>
+					</div>
+					<div class="col-md-6">
+						<h3>Learn</h3>
+						<nav>
+							<ul>
+								<li><a href="#">Legal</a></li>
+								<li><a href="#">Privacy</a></li>
+								<li><a href="#">Careers</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
 
-          <div class="site-footer__col-four">
-            <h3 class="headline headline--small">Connect With Us</h3>
-            <nav>
-              <ul class="min-list social-icons-list group">
-                <li>
-                  <a href="#" class="social-color-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                </li>
-                <li>
-                  <a href="#" class="social-color-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                </li>
-                <li>
-                  <a href="#" class="social-color-youtube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-                </li>
-                <li>
-                  <a href="#" class="social-color-linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                </li>
-                <li>
-                  <a href="#" class="social-color-instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </footer>
- 
+				<h3>Connect With Us</h3>
 
-	<footer id="colophon" class="site-footer <?php echo wp_bootstrap_starter_bg_class(); ?>" role="contentinfo">
-		<div class="container pt-3 pb-3">
-            <div class="site-info">
-                &copy; <?php echo date('Y'); ?> <?php echo '<a href="'.home_url().'">'.get_bloginfo('name').'</a>'; ?>
-                <span class="sep"> | </span>
-                <a class="credits" href="https://afterimagedesigns.com/wp-bootstrap-starter/" target="_blank" title="WordPress Technical Support" alt="Bootstrap WordPress Theme"><?php echo esc_html__('Bootstrap WordPress Theme','wp-bootstrap-starter'); ?></a>
+				<nav class="footer-socials">
+					<ul>
+						<li>
+							<a href=" #"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+						</li>
+					</ul>
+				</nav>
 
-            </div> 
+			</div>
 		</div>
-	</footer> 
+	</div>
+
+	<div class="container pt-3 pb-3">
+		<div class="site-info">
+			&copy;
+			<?php echo date('Y'); ?>
+			<?php echo '<a href="'.home_url().'">'.get_bloginfo('name').'</a>'; ?>
+
+
+
+		</div>
+	</div>
+
+
+
+</footer>
+
+
+
 
 <?php wp_footer(); ?>
 </body>
+
 </html>
