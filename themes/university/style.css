@@ -9,3 +9,127 @@ Requires at least: 4.7
 Requires PHP: 5.2.4
 Tested up to: 5.4
 */
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Colors
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+	## Posts and pages
+	## Comments
+# Infinite scroll
+# Media
+	## Captions
+	## Galleries
+# Woocommerce
+# Footer
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Colors
+--------------------------------------------------------------*/
+:root {
+  --nav-active-link: #faf0ca;
+}
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+
+h1 {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 45px;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+h4 {
+  font-size: 25px;
+  font-weight: 300;
+}
+
+h5 {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+h6 {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+p,
+span,
+a,
+li {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+## Menus
+--------------------------------------------------------------*/
+
+.menu-item .nav-link {
+  color: white !important;
+}
+
+.current_page_item .nav-link {
+  color: var(--nav-active-link) !important;
+}
+
+.current_page_item.active .dropdown-item {
+  color: var(--nav-active-link) !important;
+}
+.dropdown.active .dropdown-toggle {
+  color: var(--nav-active-link) !important;
+}
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+
+.page-banner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+}
+.page-banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.page-banner-content {
+  background: #00000066;
+  position: relative;
+  z-index: 2;
+}
+
+.site-footer {
+  position: fixed;
+  bottom: 0;
+}
