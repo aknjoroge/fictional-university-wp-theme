@@ -227,3 +227,40 @@ a {
 .btn {
   text-decoration: none;
 }
+.parent-links .parent {
+  background: #0d3b66;
+
+  width: 100%;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  height: 51px;
+  margin: 0;
+}
+.parent-links .parent a {
+  color: white;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.parent-links ul {
+  list-style: none;
+  padding: 0;
+}
+.parent-links li a {
+  text-decoration: none;
+}
+.parent-links li {
+  background: #f4e6b1;
+
+  width: 100%;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  height: 51px;
+}
+.parent-links li.active {
+  background-color: #f4de89;
+}

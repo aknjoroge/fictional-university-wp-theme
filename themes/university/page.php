@@ -33,9 +33,9 @@ get_header(); ?>
 
 <div class="container py-5">
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-9">
 
-      <nav aria-label="breadcrumb">
+      <nav style="width: fit-content;" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item active" aria-current="page">Library</li>
@@ -56,11 +56,11 @@ get_header(); ?>
       </div>
 
     </div>
-    <div class="col-md-2">
-      <div class="page-links">
-        <h2 class="page-links__title"><a href="#">About Us</a></h2>
-        <ul class="min-list">
-          <li class="current_page_item"><a href="#">Our History</a></li>
+    <div class="col-md-3">
+      <div class="parent-links">
+        <h2 class="parent"><a href="#">About Us</a></h2>
+        <ul>
+          <li class="active"><a href=" #">Our History</a></li>
           <li><a href="#">Our Goals</a></li>
         </ul>
       </div>

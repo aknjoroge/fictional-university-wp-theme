@@ -37,24 +37,22 @@
 				<div class="row">
 					<div class="col-md-6">
 						<h3>Explore</h3>
-						<nav>
-							<ul>
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Programs</a></li>
-								<li><a href="#">Events</a></li>
-								<li><a href="#">Campuses</a></li>
-							</ul>
-						</nav>
+						<?php
+						
+						wp_nav_menu( array(
+							'theme_location'=>'footer-explore'
+						) );
+						?>
+						 
 					</div>
 					<div class="col-md-6">
 						<h3>Learn</h3>
-						<nav>
-							<ul>
-								<li><a href="#">Legal</a></li>
-								<li><a href="#">Privacy</a></li>
-								<li><a href="#">Careers</a></li>
-							</ul>
-						</nav>
+						<?php
+						
+						wp_nav_menu( array(
+							'theme_location'=>'footer-learn'
+						) );
+						?>
 					</div>
 				</div>
 			</div>

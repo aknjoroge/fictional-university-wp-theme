@@ -45,6 +45,8 @@ function wp_bootstrap_starter_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'wp-bootstrap-starter' ),
+		'footer-explore' => esc_html__( 'Footer explore', 'wp-bootstrap-starter' ),
+		'footer-learn' => esc_html__( 'Footer learn', 'wp-bootstrap-starter' ),
 	) );
 
 	/*
