@@ -14,30 +14,84 @@
 
 get_header(); ?>
 
-<section id="primary" class="content-area col-sm-12 col-md-12 col-lg-8">
 
 
-	<div id="main" class="site-main" role="main">
+
+<div class="page-banner">
+	<div class="page-banner-image"
+		style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/ocean.jpg' ) ?>)">
+	</div>
+
+	<div
+		class=" d-flex  justify-content-end flex-column page-banner-content inner-page-banner-content text-center text-white py-5">
+		<div class="text-left container">
+
+			<h1>
+				Blogs
+			</h1>
+			<h3>Learn how the school of your dreams got started.</h3>
+		</div>
+	</div>
+</div>
+
+<div class="mt-4 container">
+	<div class="row">
+
+	<?php
+ 
+while(have_posts( )){
+the_post();
+
+?>
+
+<div class="col-md-6 p-3">
+<div class="card blog-item"  >
+  <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+  <div class="card-body">
+    <h5 class="card-title"><?php the_title( ) ?></h5>
+	<div class="card-text">
+	<div class="alert alert-warning" role="alert">
+ Posted by <?php the_author_posts_link( ); ?> on <?php the_time('j/m/y'  ); ?> in <?php  the_category( ', ');?>
+</div>
+		<?php the_excerpt( 10); ?>
+	</div>
+     <a href="<?php the_permalink( ); ?>" class="btn btn-primary">Read More</a>
+  </div>
+</div>
 
 	 
-
-		 sas
-
+</div>
 
 
+<?php
 
 
-	</div><!-- #main -->
-</section><!-- #primary -->
 
- 
+}
 
- 
- 
+?>
 
- 
- 
- 
+	</div>
+</div>
+
+
+<div class="container mt-3">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 text-center">
+			<?php echo paginate_links(  ); ?>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
 
 <?php
 get_sidebar();

@@ -15,24 +15,12 @@ Tested up to: 5.4
 ----------------------------------------------------------------
 # Colors
 # Typography
-# Elements
 # Forms
 # Navigation
 	## Header
 	## Footer
-# Accessibility
-# Alignments
-# Clearings
-# Widgets
-# Content
-	## Posts and pages
-	## Comments
-# Infinite scroll
-# Media
-	## Captions
-	## Galleries
-# Woocommerce
-# Footer
+# Elements
+ 
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -266,4 +254,7 @@ a {
 }
 .breadcrumb a {
   text-decoration: none;
+}
+.blog-item {
+  height: 100%;
 }

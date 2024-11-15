@@ -33,15 +33,24 @@ get_header(); ?>
 
 <div class="container py-5">
   <div class="row">
-    <div class="col-md-9">
+
+    <?php
+    $parentId = wp_get_post_parent_id(get_the_ID());
+
+    $hasChildren = get_pages( array(
+      'child_of' =>  get_the_ID()
+    )  );
+
+    if($parentId or $hasChildren){
+        $show_relation_menu = true;
+    }   
+
+    ?>
+
+    <div class="col-md-<?php echo $show_relation_menu ? '9':'12' ?>">
 
       <?php
-
-      $parentId = wp_get_post_parent_id(get_the_ID());
-       
-
       if($parentId){
-
         ?>
 
 <nav style="width: fit-content;" aria-label="breadcrumb">
@@ -54,16 +63,11 @@ get_header(); ?>
           </li>
         </ol>
       </nav>
-
-        <?php
-
-        
-
+        <?php       
       }; 
       ?>
  
       <div>
-
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia voluptates vero vel temporibus aliquid
         possimus,
         facere accusamus modi. Fugit saepe et autem, laboriosam earum reprehenderit illum odit nobis, consectetur dicta.
@@ -76,7 +80,11 @@ get_header(); ?>
 
     </div>
 
-    <div class="col-md-3">
+    <?php
+    if ($show_relation_menu) {
+      ?>
+
+<div class="col-md-3">
       <div class="parent-links">
         <h2 class="parent"><a href="<?php echo get_the_permalink($parentId  ); ?>">
           <?php 
@@ -96,6 +104,7 @@ get_header(); ?>
           $child_page_options = array(
             'title_li' => NULL,
             'child_of' => $child_of,
+            'sort_column' =>'order_menu'
 
           );
         
@@ -105,6 +114,11 @@ get_header(); ?>
         </ul>
       </div>
     </div>
+<?php
+       
+    }
+    ?>
+
   </div>
 </div>
 
