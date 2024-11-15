@@ -264,3 +264,6 @@ a {
 .parent-links li.active {
   background-color: #f4de89;
 }
+.breadcrumb a {
+  text-decoration: none;
+}
