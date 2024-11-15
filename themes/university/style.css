@@ -167,6 +167,9 @@ a {
 .inner-page-banner-content {
   height: 300px;
 }
+.blog-page-banner-content {
+  height: 450px;
+}
 
 .event-date {
   background: #0d3b66;

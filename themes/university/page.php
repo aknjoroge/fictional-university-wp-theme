@@ -27,8 +27,6 @@ get_header(); ?>
       <h3>Learn how the school of your dreams got started.</h3>
     </div>
   </div>
-
-
 </div>
 
 <div class="container py-5">
