@@ -27,9 +27,9 @@ get_header(); ?>
 		<div class="text-left container">
 
 			<h1>
-				Blogs
+				Welcome to our blog!
 			</h1>
-			<h3>Learn how the school of your dreams got started.</h3>
+			<h3>Keep up with our latest news.</h3>
 		</div>
 	</div>
 </div>
@@ -53,9 +53,9 @@ the_post();
 	<div class="alert alert-warning" role="alert">
  Posted by <?php the_author_posts_link( ); ?> on <?php the_time('j/m/y'  ); ?> in <?php  the_category( ', ');?>
 </div>
-		<?php the_excerpt( 10); ?>
+		<?php echo wp_trim_words( get_the_content(), 18 ); ?>
 	</div>
-     <a href="<?php the_permalink( ); ?>" class="btn btn-primary">Read More</a>
+     <a href="<?php the_permalink( ); ?>" class="mt-2 btn btn-primary">Read More</a>
   </div>
 </div>
 

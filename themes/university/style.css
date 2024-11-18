@@ -261,3 +261,7 @@ a {
 .blog-item {
   height: 100%;
 }
+
+.width-fit-content {
+  width: fit-content;
+}

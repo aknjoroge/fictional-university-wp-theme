@@ -31,8 +31,8 @@ while(have_posts()){
 			<div class="row">
 
 
-				<div class="col-md-5">
-					<div class="alert alert-info" role="alert">
+				<div class="col-md-12">
+					<div class="alert alert-info width-fit-content " role="alert">
 						Posted by
 						<?php the_author_posts_link( ); ?> on
 						<?php the_time('j/m/y'  ); ?> in
@@ -50,7 +50,7 @@ while(have_posts()){
 
 	<div class="row">
 
-		<div class="col-md-7">
+		<div class="col-md-12">
 			<nav style="width: fit-content;" aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="<?php echo site_url('/blogs' ); ?>">

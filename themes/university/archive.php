@@ -9,20 +9,60 @@
 
 get_header(); ?>
 
-	<section id="primary" class="content-area col-sm-12 col-lg-8">
-		<div id="main" class="site-main" role="main">
+
+<div class="page-banner">
+	<div class="page-banner-image"
+		style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/library-hero.jpg' ) ?>)">
+	</div>
+
+	<div
+		class=" d-flex  justify-content-end flex-column page-banner-content blog-page-banner-content text-center text-white py-5">
+		<div class="text-left container">
+
+			<h1>
+				<?php the_archive_title(); ?>
+			</h1>
+
+			<div class="row">
+
+				<?php 
+
+				if(get_the_archive_description(  )){
+
+					?>
+
+				<div class="col-md-12">
+					<div class="alert alert-info width-fit-content " role="alert">
+						<?php echo the_archive_description(); ?>
+					</div>
+				</div>
+				<?php
+
+				};
+
+				?>
+
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<section id="primary" class="content-area col-sm-12 col-lg-8">
+	<div id="main" class="site-main" role="main">
 
 		<?php
 		if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<?php
+		<header class="page-header">
+			<?php
 					the_archive_title( '<h1 class="page-title">', '</h1>' );
 					the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
-			</header><!-- .page-header -->
+		</header><!-- .page-header -->
 
-			<?php
+		<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
 
@@ -43,8 +83,8 @@ get_header(); ?>
 
 		endif; ?>
 
-		</div><!-- #main -->
-	</section><!-- #primary -->
+	</div><!-- #main -->
+</section><!-- #primary -->
 
 <?php
 get_sidebar();
