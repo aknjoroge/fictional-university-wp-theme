@@ -58,15 +58,15 @@ get_header(); ?>
 
 		?>
 
-		<div class="col-md-6">
-			<div class="card  mb-4 ">
+		<div class="col-md-6 my-2">
+			<div class="card ">
 
 				<div class="card-body">
 
 					<div class="card-title">
-						<h4>
+						<h5>
 							<?php the_title( );?>
-						</h4>
+						</h5>
 					</div>
 
 					<div class="alert alert-warning" role="alert">
