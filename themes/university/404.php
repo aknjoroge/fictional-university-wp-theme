@@ -50,9 +50,27 @@ get_header(); ?>
 
 						<?php
 								get_search_form();
+
+
+								?>
+
+								<div class="mt-2 sitemap">
+									<hr/>
+									<?php
+									wp_list_pages( array(
+										'title_li' => 'Site Map',
+										'depth' => 1
+									) );
+									?>
+								</div>
+
+
+<?php
 		
 		
 							?>
+
+
 
 					</div>
 				</div>

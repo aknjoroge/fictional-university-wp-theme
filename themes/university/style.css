@@ -269,3 +269,10 @@ a {
 .card {
   height: 100%;
 }
+
+.sitemap .pagenav {
+  list-style: none;
+}
+.sitemap a {
+  color: #999;
+}
