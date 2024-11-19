@@ -71,46 +71,56 @@ get_header();
         <div class="px-5">
             <h3 class="text-center font-weight-normal">From Our Blogs</h3>
 
-            <div class=" row   py-2 rounded">
+            <?php 
+            $queryOptions = array(
+                'post_type' => 'post',
+                'posts_per_page' => 2,
+                'orderby' => 'date'
+            );
+
+            $blogs = new WP_Query($queryOptions );
+
+            while($blogs-> have_posts(  )){
+                $blogs->the_post();
+
+                ?>
+<div class=" row   py-2 rounded">
                 <div class="col-md-3">
                     <div class="event-date blog-date">
 
-                        <span class="month">jan</span>
-                        <span class="day">20</span>
+                        <span class="month">
+                            <?php the_time('M'); ?>
+                        </span>
+                        <span class="day"><?php the_time('d'); ?></span>
                     </div>
 
                 </div>
                 <div class="col-md-9">
-                    <h5><a href="#">We Were Voted Best School</a></h5>
-                    <p>For the 100th year in a row we are voted #1.
-                        <a href="#" class="nu gray">Learn more</a>
+                    <h5><a href="<?php the_permalink(  ); ?>"> <?php the_title(); ?> </a></h5>
+                    <p>
+                        <?php echo wp_trim_words(get_the_content( ), 10); ?>
+                        <a href="<?php the_permalink(  ); ?>" class="nu gray">Learn more</a>
                     </p>
                 </div>
             </div>
-            <div class="mt-3 row   py-2 rounded">
-                <div class="col-md-3">
-                    <div class="event-date blog-date">
+                <?php
 
-                        <span class="month">feb</span>
-                        <span class="day">04</span>
-                    </div>
+                wp_reset_postdata();                 
 
-                </div>
-                <div class="col-md-9">
-                    <h5><a href="#">Professors in the National Spotlight</a></h5>
-                    <p>Two of our professors have been in national news lately. Read more
+            }
 
 
-                        <a href="#" class="nu gray">Learn more</a>
-                    </p>
-                </div>
-            </div>
+
+            ?>
+            
+            
 
 
 
 
 
-            <p class="text-center"><a href="#" class="btn btn-primary mt-3">View All Blog Posts</a></p>
+
+            <p class="text-center"><a href="<?php echo site_url('/blogs') ?>" class="btn btn-primary mt-3">View All Blog Posts</a></p>
         </div>
     </div>
 </div>
