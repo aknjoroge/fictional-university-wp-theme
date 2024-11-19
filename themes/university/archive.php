@@ -49,42 +49,60 @@ get_header(); ?>
 	</div>
 </div>
 
-<section id="primary" class="content-area col-sm-12 col-lg-8">
-	<div id="main" class="site-main" role="main">
+<div class="container py-4">
+	<div class="row">
 
 		<?php
-		if ( have_posts() ) : ?>
+	while(have_posts(  )){
+		the_post(  );
 
-		<header class="page-header">
-			<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-		</header><!-- .page-header -->
+		?>
+
+		<div class="col-md-12">
+			<div class="card mb-4 ">
+
+				<div class="card-body">
+
+					<div class="card-title">
+						<h3>
+							<?php the_title( );?>
+						</h3>
+					</div>
+
+					<div class="alert alert-warning" role="alert">
+						<?php wp_bootstrap_starter_posted_on(); ?>
+					</div>
+					<div>
+						<?php echo wp_trim_words( get_the_content (), 20  ) ?>
+					</div>
+
+
+					<div>
+
+						<?php wp_bootstrap_starter_entry_footer(); ?>
+					</div>
+
+				</div>
+			</div>
+
+
+
+		</div>
+
+		<div class="col-md-12">
+		<?php echo paginate_links(  ); ?>
+		</div>
 
 		<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_format() );
+	}
 
-			endwhile;
+?>
 
-			the_posts_navigation();
+	</div>
+</div>
 
-		else :
 
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif; ?>
-
-	</div><!-- #main -->
-</section><!-- #primary -->
 
 <?php
 get_sidebar();
