@@ -17,3 +17,7 @@ Created using [WP Bootstrap Starter theme](https://github.com/aknjoroge/wp-boots
 - ### Project Setup using Bootstrap 4
 
 Instead of using the template code the Instructor provided, I decided to create the mark up and stylying on my own using Bootstarp 4 & fontawesome
+
+- ### Blog, archive, 404 & search page designed
+
+I implemented blogs and pagination on the blog page and styled the archive, 404 and search pages to display relevant content to a user

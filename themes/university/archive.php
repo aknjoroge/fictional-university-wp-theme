@@ -58,15 +58,15 @@ get_header(); ?>
 
 		?>
 
-		<div class="col-md-12">
-			<div class="card mb-4 ">
+		<div class="col-md-6">
+			<div class="card  mb-4 ">
 
 				<div class="card-body">
 
 					<div class="card-title">
-						<h3>
+						<h4>
 							<?php the_title( );?>
-						</h3>
+						</h4>
 					</div>
 
 					<div class="alert alert-warning" role="alert">
@@ -76,7 +76,7 @@ get_header(); ?>
 						<?php echo wp_trim_words( get_the_content (), 20  ) ?>
 					</div>
 
-
+					<hr>
 					<div>
 
 						<?php wp_bootstrap_starter_entry_footer(); ?>
@@ -89,15 +89,17 @@ get_header(); ?>
 
 		</div>
 
-		<div class="col-md-12">
-		<?php echo paginate_links(  ); ?>
-		</div>
+
 
 		<?php
 
 	}
 
 ?>
+
+		<div class="col-md-12">
+			<?php echo paginate_links(  ); ?>
+		</div>
 
 	</div>
 </div>
