@@ -58,6 +58,45 @@ while(have_posts()){
 			<?php the_content( ); ?>
 		</div>
 
+		<div class="col-md-12">
+		<hr>
+		</div>
+		<div class="col-md-4">
+			
+			<h3>Related programs</h3>
+
+			<?php
+			$programs = get_field('related_programs');
+
+			 
+
+			
+			foreach($programs as $program){
+				?>
+				
+				 
+					<div>
+					<a href="<?php echo get_the_permalink($program); ?>">
+					<div class="card mb-2">
+						<div class="card-body">
+							<h6 class="m-0 p-0">
+							<?php echo get_the_title( $program ); ?>
+							</h6>
+						</div>
+					</div>
+					</a>
+					</div>
+				 
+
+				
+
+				<?php
+			}
+
+
+			?>
+		</div>
+
 	</div>
 
 

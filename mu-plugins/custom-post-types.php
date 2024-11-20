@@ -22,6 +22,26 @@ function post_types_cb(){
          
     ) );
 
+    register_post_type( 'program',  array(
+        'public'=>true,
+        'labels' => array(
+            'name'=>'Program',
+            'singular_name'=>'Program',
+            'add_new'=>'Add program',
+            'add_new_item'=>'Add new program',
+            'edit_item'=>'Edit program',
+
+        ),
+        'menu_icon'=> 'dashicons-schedule',
+        'supports' => array('title', 'editor','excerpt'),
+        'has_archive' => true,
+        'rewrite' => array(
+            'slug' => 'programs'
+        )
+
+         
+    ) );
+
 }
 
 
