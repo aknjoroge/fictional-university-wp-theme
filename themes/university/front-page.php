@@ -26,39 +26,84 @@ get_header();
         <div class="px-5">
             <h3 class="text-center font-weight-normal">Upcoming Events</h3>
 
-            <div class="row shadow-sm py-2 rounded">
-                <div class="col-md-3">
-                    <div class="event-date">
 
-                        <span class="month">Mar</span>
-                        <span class="day">25</span>
-                    </div>
+                <?php
+                $today = date('Ymd');
 
-                </div>
-                <div class="col-md-9">
-                    <h5><a href="#">Poetry in the 100</a></h5>
-                    <p>Bring poems you&rsquo;ve wrote to the 100 building this Tuesday for an open mic and snacks.
-                        <a href="#" class="nu gray">Learn more</a>
-                    </p>
-                </div>
-            </div>
 
-            <div class="mt-3 row shadow-sm py-2 rounded">
-                <div class="col-md-3">
-                    <div class="event-date">
+                $eventQueryFilters = array(
+                    'post_type' =>'event',
+                    'posts_per_page' => -1,
+                    'order' =>'ASC',
+                    'orderby' => 'meta_value_num' ,
+                    'meta_key' => 'event_date',
+                    'meta_type' => 'NUMERIC',
+                    'meta_query' => array(
+                        'key' => 'event_date',
+                        'value' => $today,
+                        'compare' => '>=',
+                        'type' => 'NUMERIC'
+                    )
+                );
+                $eventData = new WP_Query($eventQueryFilters);
 
-                        <span class="month">Apr</span>
-                        <span class="day">02</span>
-                    </div>
+                    while($eventData -> have_posts(  )){
+                        $eventData -> the_post(  );
 
-                </div>
-                <div class="col-md-9">
-                    <h5><a href="#">Quad Picnic Party</a></h5>
-                    <p>Live music, a taco truck and more can found in our third annual quad picnic day.
-                        <a href="#" class="nu gray">Learn more</a>
-                    </p>
-                </div>
-            </div>
+                       
+
+                        $eventDate = new DateTime(get_field('event_date'));
+
+                        
+
+                        ?>
+
+                         <div class="row shadow-sm py-2 mb-3 rounded">
+                                <div class="col-md-3">
+                                    <div class="event-date">
+
+                                        <span class="month"> <?php echo $eventDate->format('M'); ?> </span>
+                                        <span class="day"><?php echo $eventDate->format('d'); ?></span>
+                                        <!-- <span><?php echo $eventDate->format('y'); ?></span> -->
+                                    </div>
+
+                                </div>
+                                <div class="col-md-9">
+                                    <h5><a href="#"><?php the_title(); ?></a></h5>
+                                    <p>
+                                    <?php 
+                        
+                         
+                        
+                        if(has_excerpt()){
+                            echo get_the_excerpt();
+
+                        } else {
+                            echo wp_trim_words( get_the_content (), 18  );
+                        }
+                        
+                        
+                         ?>
+                                        <a href="#" class="nu gray">Learn more</a>
+                                    </p>
+                                </div>
+                            </div>
+
+
+                        <?php
+
+
+
+
+                    }
+
+
+
+                ?>
+                
+
+           
+ 
 
 
 
