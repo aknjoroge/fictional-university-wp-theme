@@ -14,7 +14,8 @@ get_header();
         <h1>Welcome!</h1>
         <h2>We think you&rsquo;ll like it here.</h2>
         <h3>Why don&rsquo;t you check out the <strong>major</strong> you&rsquo;re interested in?</h3>
-        <div> <a href="#" class="mt-2 btn btn-primary">Find Your Major</a></div>
+        <div> <a href="<?php echo get_post_type_archive_link('program'); ?>" class="mt-2 btn btn-primary">Find Your
+                Major</a></div>
     </div>
 
 

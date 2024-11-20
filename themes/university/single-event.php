@@ -66,21 +66,16 @@ if($programs){
 <div class="col-md-12">
 			<hr>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-12">
 
 			<h3>Related programs</h3>
 
-			<?php
-			
+			<div class="row">
 
-			 
-
-			
+			<?php			
 			foreach($programs as $program){
 				?>
-
-
-			<div>
+			<div class="col-md-4">
 				<a href="<?php echo get_the_permalink($program); ?>">
 					<div class="card mb-2">
 						<div class="card-body">
@@ -91,15 +86,13 @@ if($programs){
 					</div>
 				</a>
 			</div>
-
-
-
-
 			<?php
 			}
-
-
 			?>
+
+			</div>
+
+			
 		</div>
 	<?php
 
