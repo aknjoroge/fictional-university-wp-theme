@@ -58,7 +58,7 @@ get_header(); ?>
 
 		?>
 
-		<div class="col-md-6 my-2">
+		<div class="col-md-12 my-2">
 			<div class="card ">
 
 				<div class="card-body">
