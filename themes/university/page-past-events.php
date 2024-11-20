@@ -1,6 +1,11 @@
 <?php
 /**
- * The template for displaying archive pages
+ * The template for displaying all pages
+ *
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages
+ * and that other 'pages' on your WordPress site may use a
+ * different template.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -9,44 +14,19 @@
 
 get_header(); ?>
 
-
 <div class="page-banner">
-    <div class="page-banner-image"
-        style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/library-hero.jpg' ) ?>)">
+  <div class="page-banner-image"
+    style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/ocean.jpg' ) ?>)">
+  </div>
+
+  <div
+    class=" d-flex  justify-content-end flex-column page-banner-content inner-page-banner-content text-center text-white py-5">
+    <div class="text-left container">
+
+      <h1><?php the_title(); ?></h1>
+      <h3>A recap of our past events.</h3>
     </div>
-
-    <div
-        class=" d-flex  justify-content-end flex-column page-banner-content blog-page-banner-content text-center text-white py-5">
-        <div class="text-left container">
-
-            <h1>
-                <?php the_archive_title(); ?>
-            </h1>
-
-            <div class="row">
-
-                <?php 
-
-				if(get_the_archive_description(  )){
-
-					?>
-
-                <div class="col-md-12">
-                    <div class="alert alert-info width-fit-content " role="alert">
-                        <?php echo the_archive_description(); ?>
-                    </div>
-                </div>
-                <?php
-
-				};
-
-				?>
-
-
-            </div>
-
-        </div>
-    </div>
+  </div>
 </div>
 
 <div class="container mt-3 py-4">
@@ -54,8 +34,30 @@ get_header(); ?>
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <?php
-            while(have_posts(  )){
-                the_post(  );
+             $today = date('Ymd');
+
+$past_events_query = array(
+  'paged'=> get_query_var( 'paged',1 ),
+  'post_type' =>'event',
+  'posts_per_page' => 10,
+  'order' =>'ASC',
+  'orderby' => 'meta_value_num' ,
+  'meta_key' => 'event_date',
+  'meta_type' => 'NUMERIC',
+  'meta_query' => array(
+      'key' => 'event_date',
+      'value' => $today,
+      'compare' => '<',
+      'type' => 'NUMERIC'
+  )
+);
+
+            $past_events = new WP_Query($past_events_query);
+
+
+
+            while($past_events-> have_posts(  )){
+              $past_events->the_post(  );
 
                 $eventDate = new DateTime(get_field('event_date'));
 
@@ -117,19 +119,17 @@ get_header(); ?>
 
     <div class="row">
         <div class="col-md-12 text-center">
-            <?php echo paginate_links(  ); ?>
-        </div>
-
-        <div class="col-md-12 text-center my-3">
-
-            <a class="btn btn-primary" href="<?php echo site_url('/past-events'); ?>">View past events</a>
+            <?php
+             
+            
+            echo paginate_links( array(
+              'total'=> $past_events -> max_num_pages
+            ) ); ?>
         </div>
     </div>
 
 
 </div>
-
-
 
 <?php
 get_sidebar();

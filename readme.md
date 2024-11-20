@@ -25,3 +25,7 @@ I implemented blogs and pagination on the blog page and styled the archive, 404 
 - ### Event post type & custom query
 
 Defined an event post type and using a custom url query to load only future events in the post type archive page
+
+- ### Pagination implementation on a custom query
+
+Implemented pagination for past events using custom query
