@@ -20,7 +20,7 @@ get_header(); ?>
         <div class="text-left container">
 
             <h1>
-                <?php the_archive_title(); ?>
+               All Events
             </h1>
 
             <div class="row">
