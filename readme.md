@@ -21,3 +21,7 @@ Instead of using the template code the Instructor provided, I decided to create 
 - ### Blog, archive, 404 & search page designed
 
 I implemented blogs and pagination on the blog page and styled the archive, 404 and search pages to display relevant content to a user
+
+- ### Event post type & custom query
+
+Defined an event post type and using a custom url query to load only future events in the post type archive page

@@ -27,13 +27,13 @@ get_header();
             <h3 class="text-center font-weight-normal">Upcoming Events</h3>
 
 
-                <?php
+            <?php
                 $today = date('Ymd');
 
 
                 $eventQueryFilters = array(
                     'post_type' =>'event',
-                    'posts_per_page' => -1,
+                    'posts_per_page' => 2,
                     'order' =>'ASC',
                     'orderby' => 'meta_value_num' ,
                     'meta_key' => 'event_date',
@@ -58,20 +58,26 @@ get_header();
 
                         ?>
 
-                         <div class="row shadow-sm py-2 mb-3 rounded">
-                                <div class="col-md-3">
-                                    <div class="event-date">
+            <div class="row shadow-sm py-2 mb-3 rounded">
+                <div class="col-md-3">
+                    <div class="event-date">
 
-                                        <span class="month"> <?php echo $eventDate->format('M'); ?> </span>
-                                        <span class="day"><?php echo $eventDate->format('d'); ?></span>
-                                        <!-- <span><?php echo $eventDate->format('y'); ?></span> -->
-                                    </div>
+                        <span class="month">
+                            <?php echo $eventDate->format('M'); ?>
+                        </span>
+                        <span class="day">
+                            <?php echo $eventDate->format('d'); ?>
+                        </span>
+                        <!-- <span><?php echo $eventDate->format('y'); ?></span> -->
+                    </div>
 
-                                </div>
-                                <div class="col-md-9">
-                                    <h5><a href="#"><?php the_title(); ?></a></h5>
-                                    <p>
-                                    <?php 
+                </div>
+                <div class="col-md-9">
+                    <h5><a href="<?php the_permalink(  ); ?>">
+                            <?php the_title(); ?>
+                        </a></h5>
+                    <p>
+                        <?php 
                         
                          
                         
@@ -84,13 +90,13 @@ get_header();
                         
                         
                          ?>
-                                        <a href="#" class="nu gray">Learn more</a>
-                                    </p>
-                                </div>
-                            </div>
+                        <a href="<?php the_permalink(  ); ?>" class="nu gray">Learn more</a>
+                    </p>
+                </div>
+            </div>
 
 
-                        <?php
+            <?php
 
 
 
@@ -100,15 +106,16 @@ get_header();
 
 
                 ?>
-                
-
-           
- 
 
 
 
 
-            <p class="text-center"><a href="#" class="btn btn-secondary mt-3">View All Events</a></p>
+
+
+
+
+            <p class="text-center"><a href="<?php echo get_post_type_archive_link('event'); ?>"
+                    class="btn btn-secondary mt-3">View All Events</a></p>
         </div>
 
     </div>
@@ -129,26 +136,30 @@ get_header();
                 $blogs->the_post();
 
                 ?>
-<div class=" row   py-2 rounded">
+            <div class=" row   py-2 rounded">
                 <div class="col-md-3">
                     <div class="event-date blog-date">
 
                         <span class="month">
                             <?php the_time('M'); ?>
                         </span>
-                        <span class="day"><?php the_time('d'); ?></span>
+                        <span class="day">
+                            <?php the_time('d'); ?>
+                        </span>
                     </div>
 
                 </div>
                 <div class="col-md-9">
-                    <h5><a href="<?php the_permalink(  ); ?>"> <?php the_title(); ?> </a></h5>
+                    <h5><a href="<?php the_permalink(  ); ?>">
+                            <?php the_title(); ?>
+                        </a></h5>
                     <p>
                         <?php echo wp_trim_words(get_the_content( ), 10); ?>
                         <a href="<?php the_permalink(  ); ?>" class="nu gray">Learn more</a>
                     </p>
                 </div>
             </div>
-                <?php
+            <?php
 
                 wp_reset_postdata();                 
 
@@ -157,15 +168,12 @@ get_header();
 
 
             ?>
-            
-            
 
 
 
 
-
-
-            <p class="text-center"><a href="<?php echo site_url('/blogs') ?>" class="btn btn-primary mt-3">View All Blog Posts</a></p>
+            <p class="text-center"><a href="<?php echo site_url('/blogs') ?>" class="btn btn-primary mt-3">View All Blog
+                    Posts</a></p>
         </div>
     </div>
 </div>

@@ -305,3 +305,20 @@ if ( ! class_exists( 'wp_bootstrap_navwalker' )) {
     require_once(get_template_directory() . '/inc/wp_bootstrap_navwalker.php');
 }
 
+function adjust_queries($query){
+    if(!is_admin(  ) && is_post_type_archive('event') && $query-> is_main_query(  ) ){
+        $today = date('Ymd');
+        $query->set('order','ASC');
+        $query->set('orderby','meta_value_num');
+        $query->set('meta_key','event_date');
+        $query->set('meta_type','NUMERIC');
+        $query->set('meta_query', array(
+            'key' => 'event_date',
+            'value' => $today,
+            'compare' => '>=',
+            'type' => 'NUMERIC'
+        ));
+    }
+}
+
+add_action( 'pre_get_posts', 'adjust_queries');
