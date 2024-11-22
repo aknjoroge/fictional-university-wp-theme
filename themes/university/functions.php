@@ -332,6 +332,8 @@ function theme_features(){
 add_image_size('professor_landscape', 400,260, true);
 add_image_size('professor_portrait', 130,260, true);
 
+// add_image_size('custom_crop', 130,260, array('left', 'top'));
+
 
 }
 
