@@ -305,6 +305,9 @@ if ( ! class_exists( 'wp_bootstrap_navwalker' )) {
     require_once(get_template_directory() . '/inc/wp_bootstrap_navwalker.php');
 }
 
+
+//============================================================================================
+
 function adjust_queries($query){
     if(!is_admin(  ) && is_post_type_archive('event') && $query-> is_main_query(  ) ){
         $today = date('Ymd');
@@ -322,3 +325,15 @@ function adjust_queries($query){
 }
 
 add_action( 'pre_get_posts', 'adjust_queries');
+
+
+function theme_features(){
+
+add_image_size('professor_landscape', 400,260, true);
+
+add_image_size('professor_portrait', 400,400, true);
+
+
+}
+
+add_action('after_setup_theme', 'theme_features' );

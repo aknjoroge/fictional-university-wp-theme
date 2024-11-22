@@ -42,6 +42,22 @@ function post_types_cb(){
          
     ) );
 
+
+    register_post_type( 'professor',  array(
+        'public'=>true,
+        'labels' => array(
+            'name'=>'Professor',
+            'singular_name'=>'Professor',
+            'add_new'=>'Add professor',
+            'add_new_item'=>'Add new professor',
+            'edit_item'=>'Edit professor',
+
+        ),
+        'menu_icon'=> 'dashicons-businessperson',
+        'supports' => array('title', 'editor','excerpt', 'thumbnail' )
+         
+    ) );
+
 }
 
 

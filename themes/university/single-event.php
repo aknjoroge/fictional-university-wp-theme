@@ -70,7 +70,7 @@ if($programs){
 
 			<h3>Related programs</h3>
 
-			<div class="row">
+			<div class="row mt-3">
 
 			<?php			
 			foreach($programs as $program){
