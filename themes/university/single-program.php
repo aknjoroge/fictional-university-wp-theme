@@ -60,6 +60,8 @@ while(have_posts()){
 
 		<?php
 
+		$today = date('Ymd');
+
 
 $eventQueryFilters = array(
 	'post_type' =>'event',
@@ -90,26 +92,16 @@ if($eventData-> have_posts(  )){
 	?>
 
 
-<div class="col-md-12">
+		<div class="col-md-12">
 			<hr>
 			<h4 class="text-left font-weight-normal mb-1">Related Events</h4>
 
 			<div class="row">
 				<?php
                 $today = date('Ymd');
-
-
-               
-
                     while($eventData -> have_posts(  )){
                         $eventData -> the_post(  );
-
-                       
-
                         $eventDate = new DateTime(get_field('event_date'));
-
-                        
-
                         ?>
 
 				<div class="col-md-6 p-4">
@@ -133,55 +125,28 @@ if($eventData-> have_posts(  )){
 								</a></h5>
 							<p>
 								<?php 
-							
-							 
-							
 							if(has_excerpt()){
 								echo get_the_excerpt();
 	
 							} else {
 								echo wp_trim_words( get_the_content (), 10  );
 							}
-							
-							
 							 ?>
 								<a href="<?php the_permalink(  ); ?>" class="nu gray">Learn more</a>
 							</p>
 						</div>
 					</div>
 				</div>
-
-
 				<?php
-
-
-
-
                     }
-
-
-
                 ?>
 			</div>
-
-
-
 		</div>
-
-<?php
-
+		<?php
 }
 
 		?>
-
-		
-
-
-
 	</div>
-
-
-
 </div>
 
 <?php
