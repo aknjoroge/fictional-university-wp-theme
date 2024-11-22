@@ -106,8 +106,11 @@ $past_events_query = array(
 
 
             <?php
+
         
             }
+
+            wp_reset_postdata();  
         
         ?>
         </div>

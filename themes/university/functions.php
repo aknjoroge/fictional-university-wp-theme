@@ -330,7 +330,6 @@ add_action( 'pre_get_posts', 'adjust_queries');
 function theme_features(){
 
 add_image_size('professor_landscape', 400,260, true);
-
 add_image_size('professor_portrait', 400,400, true);
 
 
