@@ -41,7 +41,9 @@ while(have_posts()){
 		 
 
 	<?php
-			$thumbnail = get_the_post_thumbnail_url();
+
+ 			$thumbnail = get_the_post_thumbnail_url( get_the_ID(), 'professor_portrait');
+		 
 		?>
 
 
@@ -53,8 +55,11 @@ while(have_posts()){
 		if($thumbnail){
 			?>
 				<div class="col-md-4">
+
+				 
 		 
-		 <img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title();?>" class="img-thumbnail"/>
+				 
+		 <img src="<?php echo $thumbnail; ?>" alt="<?php the_title();?>" class="img-thumbnail"/>
 	 </div>
 			<?php
 
