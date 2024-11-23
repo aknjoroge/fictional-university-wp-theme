@@ -13,26 +13,11 @@ get_header();
 while(have_posts()){
 	the_post();
 
+
+	pageBanner( );
 	?>
 
-<div class="page-banner">
-	<div class="page-banner-image"
-		style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/ocean.jpg' ) ?>)">
-	</div>
-
-	<div
-		class=" d-flex  justify-content-end flex-column page-banner-content blog-page-banner-content text-center text-white py-5">
-		<div class="text-left container">
-
-			<h1>
-				<?php the_title(); ?>
-			</h1>
-
-
-
-		</div>
-	</div>
-</div>
+ 
 
 <div class="container mt-4">
 

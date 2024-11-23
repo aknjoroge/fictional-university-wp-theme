@@ -12,27 +12,14 @@
  * @package WP_Bootstrap_Starter
  */
 
-get_header(); ?>
+get_header(); 
 
+pageBanner(array(
+	'title'=> 'Welcome to our blog!',
+	'subtitle' => 'Keep up with our latest news'
+));
 
-
-
-<div class="page-banner">
-	<div class="page-banner-image"
-		style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/ocean.jpg' ) ?>)">
-	</div>
-
-	<div
-		class=" d-flex  justify-content-end flex-column page-banner-content inner-page-banner-content text-center text-white py-5">
-		<div class="text-left container">
-
-			<h1>
-				Welcome to our blog!
-			</h1>
-			<h3>Keep up with our latest news.</h3>
-		</div>
-	</div>
-</div>
+?>
 
 <div class="mt-4 container">
 	<div class="row">

@@ -350,6 +350,8 @@ add_action('after_setup_theme', 'theme_features' );
 // Page banner
 function pageBanner($args = null){
 
+
+
     if(!isset($args['title'])){
         $args['title'] = get_the_title();
     }
@@ -358,11 +360,21 @@ function pageBanner($args = null){
         $args['subtitle'] = get_field('subtitle');
     }
     
+    if(!isset($args['photo'])){
+
+        if(get_field('background_image') and !is_archive() and !is_home( )){
+         
+            $args['photo'] =get_field('background_image')['sizes']['large'];
+        }else{
+            $args['photo'] = get_theme_file_uri( '/assets/images/ocean.jpg' );
+        }
+
+    }
     
     ?>
         <div class="page-banner">
         <div class="page-banner-image"
-            style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/ocean.jpg' ) ?>)">
+            style="background-image: url(<?php echo $args['photo']; ?>); background-size: cover">
         </div>
 
         <div
@@ -372,7 +384,22 @@ function pageBanner($args = null){
             <h1>
                 <?php echo $args['title']; ?>
             </h1>
+            <?php 
+            if(isset($args['subtitle'])){
+                ?>
             <h3> <?php echo $args['subtitle']; ?> </h3>
+                <?php
+            }
+
+            if(isset($args['content'])){
+
+                  $args['content']();
+
+            }
+
+            ?>
+
+            
             </div>
         </div>
         </div>

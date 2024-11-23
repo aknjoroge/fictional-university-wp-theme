@@ -37,3 +37,7 @@ Relating different custom post types to each other using a relational custom fie
 - ### Custom thumbnails size
 
 Added custom crop sizes for thumbnails or media uploaded, this works hand in hand with 'Manual Image Crop plugin by Tomasz Sita'
+
+- ### Dynamic page banner that can handle a callback function
+
+Defined a function thats used on pages and other post types to create a page banner that allows custom setting of the title, subtitle or background image. The function also accepts a callback function that can be used to provide dynamic content below the title

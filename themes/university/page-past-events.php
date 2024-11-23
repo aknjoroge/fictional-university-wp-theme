@@ -12,23 +12,14 @@
  * @package WP_Bootstrap_Starter
  */
 
-get_header(); ?>
+get_header(); 
+pageBanner(array(
+	 'subtitle' => 'A recap of our past events.'
+));
 
-<div class="page-banner">
-  <div class="page-banner-image"
-    style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/ocean.jpg' ) ?>)">
-  </div>
+?>
 
-  <div
-    class=" d-flex  justify-content-end flex-column page-banner-content inner-page-banner-content text-center text-white py-5">
-    <div class="text-left container">
-
-      <h1><?php the_title(); ?></h1>
-      <h3>A recap of our past events.</h3>
-    </div>
-  </div>
-</div>
-
+ 
 <div class="container mt-3 py-4">
     <div class="row">
         <div class="col-md-2"></div>
