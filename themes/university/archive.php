@@ -7,47 +7,37 @@
  * @package WP_Bootstrap_Starter
  */
 
-get_header(); ?>
+get_header(); 
 
 
-<div class="page-banner">
-	<div class="page-banner-image"
-		style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/library-hero.jpg' ) ?>)">
-	</div>
+function metaData(){
+	if(get_the_archive_description(  )){
 
-	<div
-		class=" d-flex  justify-content-end flex-column page-banner-content blog-page-banner-content text-center text-white py-5">
-		<div class="text-left container">
-
-			<h1>
-				<?php the_archive_title(); ?>
-			</h1>
-
-			<div class="row">
-
-				<?php 
-
-				if(get_the_archive_description(  )){
-
-					?>
-
-				<div class="col-md-12">
-					<div class="alert alert-info width-fit-content " role="alert">
-						<?php echo the_archive_description(); ?>
-					</div>
-				</div>
-				<?php
-
-				};
-
-				?>
-
-
-			</div>
-
+		?>
+	
+	<div class="col-md-12">
+		<div class="alert alert-info width-fit-content " role="alert">
+			<?php echo the_archive_description(); ?>
 		</div>
 	</div>
-</div>
+	<?php
+	
+	};
+}
+
+ 
+
+pageBanner( array(	
+	'title' => get_the_archive_title(),
+	'callback' => 'metaData',
+	'photo' => get_theme_file_uri( '/assets/images/library-hero.jpg' )
+	
+) );
+
+?>
+
+
+ 
 
 <div class="container py-4">
 	<div class="row">

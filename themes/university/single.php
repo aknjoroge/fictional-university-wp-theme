@@ -12,14 +12,14 @@ get_header();
 
 while(have_posts()){
 	the_post();
-	function blogMeta(){
+	function metaData(){
 		?>
 		<div class="alert alert-info width-fit-content " role="alert"> Posted by <?php the_author_posts_link( ); ?> on <?php the_time('j/m/y'  ); ?> in <?php  the_category( ', ');?> </div>
 		<?php
 	}
 
-	pageBanner( array(
-		'content' => 'blogMeta'
+	pageBanner( array(	
+		'callback' => 'metaData'
 	) );
 
 	?>

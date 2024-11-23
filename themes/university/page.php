@@ -67,7 +67,7 @@ pageBanner();
     </div>
 
     <?php
-    if ($show_relation_menu) {
+    if (isset($show_relation_menu)) {
       ?>
 
     <div class="col-md-3">

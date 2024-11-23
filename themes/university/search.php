@@ -7,24 +7,17 @@
  * @package WP_Bootstrap_Starter
  */
 
-get_header(); ?>
+get_header(); 
 
-<div class="page-banner">
-	<div class="page-banner-image"
-		style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/library-hero.jpg' ) ?>)">
-	</div>
+pageBanner(array(
+	'title'=>  'Search Results for: '. get_search_query().' ',
+	 
+	'photo' => get_theme_file_uri( '/assets/images/library-hero.jpg' )
+));
 
-	<div
-		class=" d-flex  justify-content-end flex-column page-banner-content blog-page-banner-content text-center text-white py-5">
-		<div class="text-left container">
+?>
 
-		<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'wp-bootstrap-starter' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-
-			 
-
-		</div>
-	</div>
-</div>
+ 
 
 <div class="container  my-4">
 	<div class="row">

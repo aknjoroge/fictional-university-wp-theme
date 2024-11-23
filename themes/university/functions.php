@@ -391,9 +391,9 @@ function pageBanner($args = null){
                 <?php
             }
 
-            if(isset($args['content'])){
+            if(isset($args['callback'])){
 
-                  $args['content']();
+                  $args['callback']();
 
             }
 
