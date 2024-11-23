@@ -1,0 +1,24 @@
+{
+  "name": "fictional-university",
+  "version": "1.0.0",
+  "description": "WordPress theme by aknjoroge",
+  "main": "index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aknjoroge/fictional-university-wp-theme.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aknjoroge/fictional-university-wp-theme/issues"
+  },
+  "homepage": "https://github.com/aknjoroge/fictional-university-wp-theme#readme",
+  "devDependencies": {
+    "@wordpress/scripts": "^30.5.1"
+  }
+}
