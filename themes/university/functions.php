@@ -332,9 +332,50 @@ function theme_features(){
 add_image_size('professor_landscape', 400,260, true);
 add_image_size('professor_portrait', 130,260, true);
 
+
+/* XXX
+- To use the Manual Image Crop plugin by Tomasz Sita you need to open the
+  details page and click on the featured image
+
+ */
+
 // add_image_size('custom_crop', 130,260, array('left', 'top'));
 
 
 }
 
 add_action('after_setup_theme', 'theme_features' );
+
+
+// Page banner
+function pageBanner($args = null){
+
+    if(!isset($args['title'])){
+        $args['title'] = get_the_title();
+    }
+
+    if(!isset($args['subtitle'])){
+        $args['subtitle'] = get_field('subtitle');
+    }
+    
+    
+    ?>
+        <div class="page-banner">
+        <div class="page-banner-image"
+            style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/ocean.jpg' ) ?>)">
+        </div>
+
+        <div
+            class=" d-flex  justify-content-end flex-column page-banner-content inner-page-banner-content text-center text-white py-5">
+            <div class="text-left container">
+
+            <h1>
+                <?php echo $args['title']; ?>
+            </h1>
+            <h3> <?php echo $args['subtitle']; ?> </h3>
+            </div>
+        </div>
+        </div>
+    <?php
+
+}

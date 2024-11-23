@@ -12,23 +12,11 @@
  * @package WP_Bootstrap_Starter
  */
 
-get_header(); ?>
+get_header(); 
+pageBanner();
+?>
 
-<div class="page-banner">
-  <div class="page-banner-image"
-    style="background-image: url(<?php echo get_theme_file_uri( '/assets/images/ocean.jpg' ) ?>)">
-  </div>
-
-  <div
-    class=" d-flex  justify-content-end flex-column page-banner-content inner-page-banner-content text-center text-white py-5">
-    <div class="text-left container">
-
-      <h1><?php the_title(); ?></h1>
-      <h3>Learn how the school of your dreams got started.</h3>
-    </div>
-  </div>
-</div>
-
+ 
 <div class="container py-5">
   <div class="row">
 
@@ -51,20 +39,20 @@ get_header(); ?>
       if($parentId){
         ?>
 
-<nav style="width: fit-content;" aria-label="breadcrumb">
+      <nav style="width: fit-content;" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="<?php echo get_the_permalink($parentId ); ?>">
-            <?php echo get_the_title($parentId); ?>
-          </a></li>
+              <?php echo get_the_title($parentId); ?>
+            </a></li>
           <li class="breadcrumb-item active" aria-current="page">
             <?php the_title(); ?>
           </li>
         </ol>
       </nav>
-        <?php       
+      <?php       
       }; 
       ?>
- 
+
       <div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia voluptates vero vel temporibus aliquid
         possimus,
@@ -82,10 +70,10 @@ get_header(); ?>
     if ($show_relation_menu) {
       ?>
 
-<div class="col-md-3">
+    <div class="col-md-3">
       <div class="parent-links">
         <h2 class="parent"><a href="<?php echo get_the_permalink($parentId  ); ?>">
-          <?php 
+            <?php 
           echo get_the_title( $parentId )
           ?>
           </a></h2>
@@ -108,11 +96,11 @@ get_header(); ?>
         
           wp_list_pages($child_page_options);
           ?>
-           
+
         </ul>
       </div>
     </div>
-<?php
+    <?php
        
     }
     ?>

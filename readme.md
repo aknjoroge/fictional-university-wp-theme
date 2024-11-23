@@ -33,3 +33,7 @@ Implemented pagination for past events using custom query
 - ### Post type relations using custom fields
 
 Relating different custom post types to each other using a relational custom field and fetching the data using a meta_query
+
+- ### Custom thumbnails size
+
+Added custom crop sizes for thumbnails or media uploaded, this works hand in hand with 'Manual Image Crop plugin by Tomasz Sita'
