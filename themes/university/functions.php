@@ -232,6 +232,7 @@ function wp_bootstrap_starter_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
 }
 add_action( 'wp_enqueue_scripts', 'wp_bootstrap_starter_scripts' );
 
@@ -406,3 +407,14 @@ function pageBanner($args = null){
     <?php
 
 }
+
+
+function custom_style_imports(){
+
+    wp_enqueue_script('custom-js', get_theme_file_uri('build/index.js'), NULL, '1.0.0', true);
+
+
+ 
+}
+
+add_action( 'wp_enqueue_scripts', 'custom_style_imports' );
