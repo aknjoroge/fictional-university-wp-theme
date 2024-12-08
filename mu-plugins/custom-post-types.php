@@ -38,8 +38,6 @@ function post_types_cb(){
         'rewrite' => array(
             'slug' => 'programs'
         )
-
-         
     ) );
 
 
@@ -51,14 +49,34 @@ function post_types_cb(){
             'add_new'=>'Add professor',
             'add_new_item'=>'Add new professor',
             'edit_item'=>'Edit professor',
-
         ),
         'menu_icon'=> 'dashicons-businessperson',
         'supports' => array('title', 'editor','excerpt', 'thumbnail' )
          
     ) );
 
+
+    register_post_type( 'campus',  array(
+        'public'=>true,
+        'labels' => array(
+            'name'=>'Campus',
+            'singular_name'=>'Campus',
+            'add_new'=>'Add campus',
+            'add_new_item'=>'Add new campus',
+            'edit_item'=>'Edit campus',
+
+        ),
+        'menu_icon'=> 'dashicons-welcome-learn-more',
+        'supports' => array('title', 'editor','excerpt'),
+        'has_archive' => true,
+        'rewrite' => array(
+            'slug' => 'campus'
+        )
+    ) );
+
 }
+
+
 
 
 

@@ -10,7 +10,11 @@
   border: none;
   outline: none;
 
-  &--blue {
+  &-blue {
     background-color: $mainBlue;
+  }
+
+  .red {
+    color: red;
   }
 }
