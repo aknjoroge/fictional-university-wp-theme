@@ -47,26 +47,26 @@ pageBanner( array(
 						</p>
 					</a>
 				</div>
-			<?php
+				<?php
 		}		 
 
 	}
 
 ?>
 
+			</div>
+
+
+
+
+
+
+
+
+
+
 		</div>
-
-
-
-
-
-
-
-
-
-
 	</div>
-</div>
 
 </div>
 
