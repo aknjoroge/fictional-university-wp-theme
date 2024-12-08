@@ -29,3 +29,11 @@
     max-width: inherit !important;
   }
 }
+
+.gm-style-iw {
+  flex-direction: row-reverse !important;
+  align-items: center;
+  p {
+    margin: 0;
+  }
+}

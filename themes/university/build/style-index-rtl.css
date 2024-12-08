@@ -31,3 +31,11 @@
 .acf-map img {
   max-width: inherit !important;
 }
+
+.gm-style-iw {
+  flex-direction: row-reverse !important;
+  align-items: center;
+}
+.gm-style-iw p {
+  margin: 0;
+}

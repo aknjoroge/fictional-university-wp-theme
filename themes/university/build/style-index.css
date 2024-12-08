@@ -16,7 +16,7 @@
   outline: none;
 }
 .btn-blue {
-  background-color: #0d3b66;
+  background-color: #0D3B66;
 }
 .btn .red {
   color: red;
@@ -30,6 +30,14 @@
 }
 .acf-map img {
   max-width: inherit !important;
+}
+
+.gm-style-iw {
+  flex-direction: row-reverse !important;
+  align-items: center;
+}
+.gm-style-iw p {
+  margin: 0;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

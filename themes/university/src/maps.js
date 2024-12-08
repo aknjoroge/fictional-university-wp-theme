@@ -39,8 +39,6 @@ function initMap($el) {
   // Find marker elements within map.
   var $markers = $el.find(".marker");
 
-  console.log("markers");
-
   // Create gerenic map.
   var mapArgs = {
     zoom: $el.data("zoom") || 16,

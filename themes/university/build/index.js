@@ -63,7 +63,6 @@ __webpack_require__.r(__webpack_exports__);
 function initMap($el) {
   // Find marker elements within map.
   var $markers = $el.find(".marker");
-  console.log("markers");
 
   // Create gerenic map.
   var mapArgs = {
