@@ -420,3 +420,13 @@ function custom_style_imports(){
 add_action( 'wp_enqueue_scripts', 'custom_style_imports' );
 
 
+function my_acf_google_map_api( $api ){
+
+    $apiKey = GOOGLE_API_KEY;
+
+    $api['key'] = $apiKey;
+    
+    return $api;
+}
+
+add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
