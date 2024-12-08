@@ -17,7 +17,7 @@ while(have_posts()){
 
 	?>
 
- 
+
 
 <div class="container mt-4">
 
@@ -45,7 +45,6 @@ while(have_posts()){
 
 
 		<?php
-
  
 $professorsQueryFilters = array(
 	'post_type' =>'professor',
@@ -66,43 +65,113 @@ if($professorData-> have_posts(  )){
 
 ?>
 
-<div class="col-md-12">
-	<hr>
-	<h4 class="mb-3 text-left font-weight-normal mb-1"><?php the_title();?> professors </h4>
-	<div class="row"   >
-		<?php
+		<div class="col-md-12">
+			<hr>
+			<h4 class="mb-3 text-left font-weight-normal mb-1">
+				<?php the_title();?> professors
+			</h4>
+			<div class="row">
+				<?php
 	 
 			while($professorData -> have_posts(  )){
 				$professorData -> the_post(  );
 				$eventDate = new DateTime(get_field('event_date'));
 				?>
 
-		<div class="col-md-3  ">
+				<div class="col-md-3  ">
 
-		<div class="card"  >
-		<img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title();?>" class="card-img-top img-thumbnail"/>
-   <div class="card-body">
-   <h5 class="card-title"><a href="<?php the_permalink(  ); ?>">
-							<?php the_title(); ?>
-						</a></h5>
-    
-      
-  </div>
-</div>
-		 
-		</div>
-		<?php
+					<div class="card">
+						<img src="<?php echo get_the_post_thumbnail_url(); ?>" alt="<?php the_title();?>"
+							class="card-img-top img-thumbnail" />
+						<div class="card-body">
+							<h5 class="card-title"><a href="<?php the_permalink(  ); ?>">
+									<?php the_title(); ?>
+								</a></h5>
+
+
+						</div>
+					</div>
+
+				</div>
+				<?php
 			}
 		?>
-	</div>
-</div>
-<?php
+			</div>
+		</div>
+		<?php
 }
 
 wp_reset_postdata();  
 ?>
 
-		
+
+
+
+
+		<?php
+	$where_taught = get_field("where_taught");
+
+	if(isset($where_taught)){
+
+		?>
+
+
+
+		<div class="col-md-12">
+			<hr>
+			<h4 class="mb-3 text-left font-weight-normal mb-1"> <?php the_title( ); ?> is available at these campuses </h4>
+
+
+<div class="row">
+
+<?php
+foreach($where_taught as $campus){
+
+	?>
+
+
+			<div class="col-md-3  ">
+
+				<div class="card">
+					 
+					<div class="card-body">
+						<h5 class="card-title"><a href="<?php echo get_permalink( $campus);  ?>">
+								<?php echo get_the_title( $campus ); ?>
+							</a></h5>
+
+
+					</div>
+				</div>
+
+			</div>
+
+			<?php
+
+}
+
+
+?>
+
+</div>
+
+
+
+		</div>
+
+		<?php
+
+
+	}
+
+
+
+
+
+?>
+
+
+
+
 
 		<?php
 
@@ -146,7 +215,7 @@ if($eventData-> have_posts(  )){
                         
                         ?>
 				<div class="col-md-6 p-4">
-					 <?php
+					<?php
 					  get_template_part('/template-parts/content','event');
 					 ?>
 				</div>
