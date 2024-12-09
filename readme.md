@@ -41,3 +41,13 @@ Added custom crop sizes for thumbnails or media uploaded, this works hand in han
 - ### Dynamic page banner that can handle a callback function
 
 Defined a function thats used on pages and other post types to create a page banner that allows custom setting of the title, subtitle or background image. The function also accepts a callback function that can be used to provide dynamic content below the title
+
+- ### Campus MAP rendering
+
+On the campus archive page, Im presenting all campuses on a map using ACF Google maps component, the map location is also present in an individual campus page, where programs taught in the campus are highlighted
+
+- ### Js powered live-search using WP Rest API
+
+A user can open the js powered search modal using the s key or clicking on search header icon, this provides a user with a text field that uses axios to fetch data from the wordpress Rest API as they type in, all defined in a js class.
+
+Registered a custom field to the Rest api response of a post to show the author name.

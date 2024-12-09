@@ -51,7 +51,8 @@ function post_types_cb(){
             'edit_item'=>'Edit professor',
         ),
         'menu_icon'=> 'dashicons-businessperson',
-        'supports' => array('title', 'editor','excerpt', 'thumbnail' )
+        'supports' => array('title', 'editor','excerpt', 'thumbnail' ),
+        'show_in_rest' => true
          
     ) );
 
