@@ -26,6 +26,16 @@
 			<div class="modal-body">
 				<input placeholder="Type here..." class="form-control" type="text" name="searchField" id="searchField">
 
+
+				<hr class="mb-2">
+
+				<div class="row" id="search-results">
+
+
+				</div>
+
+
+
 			</div>
 
 		</div>

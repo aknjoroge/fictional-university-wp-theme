@@ -24,3 +24,7 @@
 .search-trigger {
   cursor: pointer;
 }
+
+.hidden {
+  display: none;
+}
