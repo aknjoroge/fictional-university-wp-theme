@@ -12,8 +12,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/style.scss */ "./css/style.scss");
 /* harmony import */ var _maps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./maps */ "./src/maps.js");
 /* harmony import */ var _maps__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_maps__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search */ "./src/search.js");
 
 
+
+new _search__WEBPACK_IMPORTED_MODULE_2__["default"]().events();
 
 /***/ }),
 
@@ -23,42 +26,10 @@ __webpack_require__.r(__webpack_exports__);
   \*********************/
 /***/ (() => {
 
-// function initMap(markers, initials) {
-//   // Map options
-//   var options = {
-//     zoom: 10,
-//     center: initials,
-//   };
-
-//   // New map
-//   var map = new google.maps.Map(document.getElementById("map"), options);
-
-//   // Loop through markers and add them to the map
-//   markers.forEach(function (marker) {
-//     addMarker(marker);
-//   });
-
-//   // Add marker function
-//   function addMarker(props) {
-//     var marker = new google.maps.Marker({
-//       position: props.coords,
-//       map: map,
-//     });
-
-//     // Check for content
-//     if (props.content) {
-//       var infoWindow = new google.maps.InfoWindow({
-//         content: props.content,
-//       });
-
-//       marker.addListener("click", function () {
-//         infoWindow.open(map, marker);
-//       });
-//     }
-//   }
-
-//   regionModal.show();
-// }
+/**
+ * ACF
+ * Source: https://www.advancedcustomfields.com/resources/google-map/ 
+ */
 
 function initMap($el) {
   // Find marker elements within map.
@@ -114,18 +85,6 @@ function initMarker($marker, map) {
     });
   }
 }
-
-/**
- * centerMap
- *
- * Centers the map showing all markers in view.
- *
- * @date    22/10/19
- * @since   5.8.6
- *
- * @param   object The map instance.
- * @return  void
- */
 function centerMap(map) {
   // Create map boundaries from all map markers.
   var bounds = new google.maps.LatLngBounds();
@@ -145,16 +104,51 @@ function centerMap(map) {
     map.fitBounds(bounds);
   }
 }
-document.addEventListener("load", function () {
-  console.log("loaded");
-});
-
-// Render maps on page load.
 $(document).ready(function () {
   $(".acf-map").each(function () {
     var map = initMap($(this));
   });
 });
+
+/***/ }),
+
+/***/ "./src/search.js":
+/*!***********************!*\
+  !*** ./src/search.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+class Search {
+  constructor() {
+    this.searchTrigger = document.getElementById("search-trigger");
+    this.searchModal = new bootstrap.Modal(document.getElementById("searchModal"));
+    this.searchField = document.getElementById("searchField");
+    this.modalShown = false;
+  }
+  events() {
+    document.addEventListener("keyup", function (e) {
+      if (e.keyCode == 83 && e.key == "s" && !this.searchModal._isShown && !this.isTextBoxInFocus()) {
+        this.searchModal.show();
+      }
+    }.bind(this));
+    this.searchTrigger.addEventListener("click", e => {
+      this.searchModal.show();
+      setTimeout(() => {
+        this.searchField.focus();
+      }, 500);
+    });
+  }
+  isTextBoxInFocus() {
+    const activeElement = document.activeElement;
+    return activeElement.tagName === "INPUT" || activeElement.tagName === "TEXTAREA" || activeElement.isContentEditable;
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Search);
 
 /***/ }),
 

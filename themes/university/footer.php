@@ -13,6 +13,25 @@
  get_template_part( 'footer-widget' );
 ?>
 
+<div id="searchModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="searchModal"
+	aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title"><b>What are you looking for?</b></h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<input placeholder="Type here..." class="form-control" type="text" name="searchField" id="searchField">
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
 <footer class="text-dark pt-5 site-footer">
 
 	<div class="container">
@@ -43,7 +62,7 @@
 							'theme_location'=>'footer-explore'
 						) );
 						?>
-						 
+
 					</div>
 					<div class="col-md-6">
 						<h3>Learn</h3>
@@ -98,6 +117,9 @@
 
 
 </footer>
+
+
+
 
 
 

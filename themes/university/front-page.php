@@ -12,6 +12,7 @@ get_header();
     <div
         class=" d-flex align-items-center justify-content-center flex-column page-banner-content text-center text-white py-5">
         <h1>Welcome!</h1>
+        
         <h2>We think you&rsquo;ll like it here.</h2>
         <h3>Why don&rsquo;t you check out the <strong>major</strong> you&rsquo;re interested in?</h3>
         <div> <a href="<?php echo get_post_type_archive_link('program'); ?>" class="mt-2 btn btn-primary">Find Your

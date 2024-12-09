@@ -1,39 +1,8 @@
-// function initMap(markers, initials) {
-//   // Map options
-//   var options = {
-//     zoom: 10,
-//     center: initials,
-//   };
+/**
+ * ACF
+ * Source: https://www.advancedcustomfields.com/resources/google-map/ 
+ */
 
-//   // New map
-//   var map = new google.maps.Map(document.getElementById("map"), options);
-
-//   // Loop through markers and add them to the map
-//   markers.forEach(function (marker) {
-//     addMarker(marker);
-//   });
-
-//   // Add marker function
-//   function addMarker(props) {
-//     var marker = new google.maps.Marker({
-//       position: props.coords,
-//       map: map,
-//     });
-
-//     // Check for content
-//     if (props.content) {
-//       var infoWindow = new google.maps.InfoWindow({
-//         content: props.content,
-//       });
-
-//       marker.addListener("click", function () {
-//         infoWindow.open(map, marker);
-//       });
-//     }
-//   }
-
-//   regionModal.show();
-// }
 
 function initMap($el) {
   // Find marker elements within map.
@@ -91,17 +60,6 @@ function initMarker($marker, map) {
   }
 }
 
-/**
- * centerMap
- *
- * Centers the map showing all markers in view.
- *
- * @date    22/10/19
- * @since   5.8.6
- *
- * @param   object The map instance.
- * @return  void
- */
 function centerMap(map) {
   // Create map boundaries from all map markers.
   var bounds = new google.maps.LatLngBounds();
@@ -122,11 +80,6 @@ function centerMap(map) {
   }
 }
 
-document.addEventListener("load", function () {
-  console.log("loaded");
-});
-
-// Render maps on page load.
 $(document).ready(function () {
   $(".acf-map").each(function () {
     var map = initMap($(this));
