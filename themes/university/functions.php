@@ -326,6 +326,8 @@ function adjust_queries($query){
             'type' => 'NUMERIC'
         ));
     }
+
+    
 }
 
 add_action( 'pre_get_posts', 'adjust_queries');

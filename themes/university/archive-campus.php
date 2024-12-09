@@ -14,7 +14,7 @@ get_header();
  
 
 pageBanner( array(
-	'title' => 'Our Campus',
+	'title' => 'Our Campuses',
 	'photo' => get_theme_file_uri( '/assets/images/library-hero.jpg' )
 ) );
 
