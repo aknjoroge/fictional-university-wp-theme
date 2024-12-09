@@ -203,7 +203,7 @@ class Search {
                                     ${results.map(function (i) {
             return `<li> 
                                         <a href="${i.link}"> ${i.title?.rendered}  </a>
-                                         ${i.type == "post" ? " By <a href=#>Author </a>" : ""}
+                                         ${i.type == "post" ? ` By ${i.authorName} ` : ""}
                                         </li>`;
           }).join("")}
 										

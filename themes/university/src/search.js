@@ -111,7 +111,7 @@ class Search {
                                         }  </a>
                                          ${
                                            i.type == "post"
-                                             ? " By <a href=#>Author </a>"
+                                             ? ` By ${i.authorName} `
                                              : ""
                                          }
                                         </li>`;

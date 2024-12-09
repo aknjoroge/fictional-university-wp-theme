@@ -442,3 +442,16 @@ function my_acf_google_map_api( $api ){
 }
 
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+
+
+function update_rest_data(){
+
+    register_rest_field( 'post', 'authorName', array(
+        'get_callback' => function (){
+            return  get_author_name(  );
+        }
+    ) );
+    
+}
+
+add_action( "rest_api_init","update_rest_data" );
