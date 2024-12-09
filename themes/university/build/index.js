@@ -182,11 +182,11 @@ class Search {
     try {
       let searchPost = await (0,axios__WEBPACK_IMPORTED_MODULE_0__["default"])({
         method: "GET",
-        url: `http://localhost:8888/FictionalUniversity/wp-json/wp/v2/posts?search=${term}`
+        url: `${globalData.url}/wp-json/wp/v2/posts?search=${term}`
       });
       let searchPages = await (0,axios__WEBPACK_IMPORTED_MODULE_0__["default"])({
         method: "GET",
-        url: `http://localhost:8888/FictionalUniversity/wp-json/wp/v2/pages?search=${term}`
+        url: `${globalData.url}/wp-json/wp/v2/pages?search=${term}`
       });
       if (searchPost.data && searchPages.data) {
         let results = [...searchPages.data, ...searchPost.data];

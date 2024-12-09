@@ -427,6 +427,9 @@ function custom_style_imports(){
     wp_enqueue_style( 'custom-css', get_theme_file_uri('build/style-index.css'));
 
 
+    wp_localize_script( 'custom-js', 'globalData', array(
+        'url' =>  get_site_url()
+    ) );
 }
 
 add_action( 'wp_enqueue_scripts', 'custom_style_imports' );

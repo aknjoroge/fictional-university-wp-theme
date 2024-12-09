@@ -83,11 +83,11 @@ class Search {
     try {
       let searchPost = await axios({
         method: "GET",
-        url: `http://localhost:8888/FictionalUniversity/wp-json/wp/v2/posts?search=${term}`,
+        url: `${globalData.url}/wp-json/wp/v2/posts?search=${term}`,
       });
       let searchPages = await axios({
         method: "GET",
-        url: `http://localhost:8888/FictionalUniversity/wp-json/wp/v2/pages?search=${term}`,
+        url: `${globalData.url}/wp-json/wp/v2/pages?search=${term}`,
       });
 
       if (searchPost.data && searchPages.data) {
