@@ -50,6 +50,30 @@ function restHandler($query){
             if(get_post_type()  == 'post' ){
                 $dataObject['authorName'] = get_author_name();
             }
+            if(get_post_type()  == 'program' ){
+
+
+                $availableCampus = get_field('where_taught');
+
+                if(isset($availableCampus) && !empty($availableCampus)){
+                    // $campusRespiose
+                    foreach($availableCampus as $programCampus){
+
+                        array_push($searchData['campus'], array(
+                            'id' => $programCampus -> ID,
+                            'title' => $programCampus -> post_title,
+                            'url' => get_the_permalink ($programCampus),
+                            'type' => $programCampus ->post_type,
+                        )); 
+                    }
+
+                   
+
+                }
+                 
+            }
+
+
             array_push($searchData[get_post_type()], $dataObject );
     
     }
@@ -120,9 +144,9 @@ function restHandler($query){
         );
 
 
-                while($relatedProfessor -> have_posts()){
-                    $relatedProfessor -> the_post(  );
-                    $dataObject = array(
+        while($relatedProfessor -> have_posts()){
+            $relatedProfessor -> the_post(  );
+            $dataObject = array(
                         'id' => get_the_ID(  ),
                         'title' => get_the_title(  ),
                         'url' => get_the_permalink (),
@@ -130,7 +154,7 @@ function restHandler($query){
                         'image' =>  get_the_post_thumbnail_url( )
                     );
                     array_push($searchData[get_post_type()], $dataObject );
-                }
+        }
 
 
                 $relatedEvents = new WP_Query(
@@ -157,10 +181,20 @@ function restHandler($query){
                 }
 
 
+             
+
+           
+
+              
+
+
+
+
     }
 
     $searchData['professor'] = array_values(array_unique($searchData['professor'], SORT_REGULAR));
     $searchData['event'] = array_values(array_unique($searchData['event'], SORT_REGULAR));
+    $searchData['campus'] = array_values(array_unique($searchData['campus'], SORT_REGULAR));
     
     wp_reset_postdata();
 
