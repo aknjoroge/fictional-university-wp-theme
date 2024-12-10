@@ -1,0 +1,28 @@
+/*--------------------------------------------------------------
+## Footer
+--------------------------------------------------------------*/
+
+.site-footer {
+  background-image: linear-gradient(#fff, #ececec);
+
+  a {
+    color: #999;
+    text-decoration: none;
+  }
+}
+
+.footer-socials {
+  ul {
+    list-style: none;
+
+    display: flex;
+    gap: 10px;
+    color: black;
+  }
+
+  a {
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+  }
+}

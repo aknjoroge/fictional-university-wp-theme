@@ -1,0 +1,42 @@
+/*--------------------------------------------------------------
+## Header
+--------------------------------------------------------------*/
+
+.menu-item .nav-link {
+  color: white !important;
+}
+
+.current_page_item {
+  &.active {
+    .dropdown-item {
+      color: var(--nav-active-link) !important;
+    }
+  }
+  .nav-link {
+    color: var(--nav-active-link) !important;
+  }
+}
+
+.dropdown.active .dropdown-toggle {
+  color: var(--nav-active-link) !important;
+}
+
+.site-title {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 19px;
+
+  &:hover {
+    text-decoration: none;
+    color: var(--nav-active-link) !important;
+  }
+}
+
+.navbar-static-top {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  left: 0;
+  right: 0;
+}

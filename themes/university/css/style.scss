@@ -1,11 +1,18 @@
-/* SASS and Global'ish Stuff */
 @import "base/variables";
-
-/* BEM Blocks */
+@import "base/typography";
 
 @import "modules/maps";
-@import "modules/search";
+@import "modules/header";
+@import "modules/footer";
+
+:root {
+  --nav-active-link: #faf0ca;
+}
 
 .hidden {
   display: none;
+}
+
+.search-trigger {
+  cursor: pointer;
 }
