@@ -125,6 +125,150 @@ a {
   text-decoration: none;
 }
 
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+.page-banner {
+  position: relative;
+}
+
+.page-banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.page-banner-content {
+  background: rgba(0, 0, 0, 0.5490196078);
+  position: relative;
+  z-index: 2;
+  height: 600px;
+}
+
+.inner-page-banner-content {
+  height: 400px;
+}
+
+.blog-page-banner-content {
+  height: 450px;
+}
+
+.event-date {
+  background: #0d3b66;
+  width: 80px;
+  height: auto;
+  padding: 25px 0px 10px 0px;
+  text-align: center;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.blog-date {
+  background: #f4d35e;
+}
+
+.event-date span {
+  display: block;
+}
+
+.event-date .month {
+  color: white;
+  line-height: 0px;
+  text-transform: uppercase;
+}
+
+.event-date .day {
+  font-size: 30px;
+  color: white;
+  font-weight: 800;
+}
+
+.blog-col {
+  background: #faf0ca;
+}
+
+.slider-item {
+  height: 500px;
+}
+
+.slider-item .content {
+  background: rgba(0, 0, 0, 0.7098039216);
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.btn {
+  text-decoration: none;
+}
+
+.parent-links .parent {
+  background: #0d3b66;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 51px;
+  margin: 0;
+}
+
+.parent-links .parent a {
+  color: white;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.parent-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.parent-links li a {
+  text-decoration: none;
+}
+
+.parent-links li {
+  background: #f4e6b1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 51px;
+}
+
+.parent-links li.active {
+  background-color: #f4de89;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+}
+
+.blog-item {
+  height: 100%;
+}
+
+.width-fit-content {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.card {
+  height: 100%;
+}
+
+.sitemap .pagenav {
+  list-style: none;
+}
+
+.sitemap a {
+  color: #999;
+}
+
 :root {
   --nav-active-link: #faf0ca;
 }

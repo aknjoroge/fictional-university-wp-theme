@@ -7,6 +7,8 @@
  * @package WP_Bootstrap_Starter
  */
 
+ require get_theme_file_path( '/inc/custom-rest.php' );
+
 if ( ! function_exists( 'wp_bootstrap_starter_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -212,7 +214,7 @@ function wp_bootstrap_starter_scripts() {
         wp_enqueue_style( 'wp-bootstrap-starter-default', get_template_directory_uri() . '/inc/assets/css/presets/color-scheme/blue.css', false, '' );
     }*/
 
-    wp_enqueue_script( 'theme-jquery-js', get_template_directory_uri() . '/js/jquery-3.3.1.min.js', array('jquery'), '20180710', true );
+    wp_enqueue_script( 'theme-jquery-js', get_template_directory_uri() . '/src/jquery-3.3.1.min.js', array('jquery'), '20180710', true );
 
 
 	wp_enqueue_script('jquery');
@@ -448,7 +450,6 @@ add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
 
 function update_rest_data(){
-
     register_rest_field( 'post', 'authorName', array(
         'get_callback' => function (){
             return  get_author_name(  );

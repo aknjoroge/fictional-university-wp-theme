@@ -33,7 +33,7 @@ function post_types_cb(){
 
         ),
         'menu_icon'=> 'dashicons-schedule',
-        'supports' => array('title', 'editor','excerpt'),
+        'supports' => array('title',  'excerpt'),
         'has_archive' => true,
         'rewrite' => array(
             'slug' => 'programs'
