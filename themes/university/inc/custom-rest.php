@@ -11,8 +11,7 @@ function custom_rest_config(){
 }
 
 function restHandler($query){
-
-
+    
     $searchTerm = $query['term'];
 
     $searchData = array(
@@ -82,24 +81,82 @@ function restHandler($query){
             'id' => get_the_ID(  ),
             'title' => get_the_title(  ),
             'url' => get_the_permalink (),
+            'type' => get_post_type()
         ) );
     }
 
- 
-    
-
- 
+    if(isset($searchData['program']) && !empty($searchData['program'])){
 
 
-    
+        foreach($searchData['program'] as $singleProgram ){
 
+            $relatedProfessor = new WP_Query(
+                
+                array(
+                'post_type' =>'professor',
+                'posts_per_page' => -1,
+                'orderby' => 'title',
+                'meta_query' => array(
+                    array(
+                        'key' => 'related_programs',
+                        'value' => '"'. $singleProgram['id'] .'"',
+                        'compare' => 'LIKE',
+                        // 'type' => 'NUMERIC'
+                    )
+                )
+                    )
 
+                     
+        );
+            $relatedEvents = new WP_Query(
+                    array(
+                        'post_type' =>'event',
+                        // 'posts_per_page' => 2,
+                        'order' =>'ASC',
+                        'orderby' => 'meta_value_num' ,
+                        'meta_key' => 'event_date',
+                        'meta_type' => 'NUMERIC',
+                        'meta_query' => array(
+                            'key' => 'related_programs',
+                            'value' => '"'. $singleProgram['id'] .'"',
+                           'compare' => 'LIKE',
+                            // 'type' => 'NUMERIC'
+                        )
+                        
+                    )
+        );
 
-    // $searchData['page'] = $pagesData->posts;
+            while($relatedProfessor -> have_posts()){
+                $relatedProfessor -> the_post(  );
+                    $dataObject = array(
+                        'id' => get_the_ID(  ),
+                        'title' => get_the_title(  ),
+                        'url' => get_the_permalink (),
+                        'type' => get_post_type(),
+                        'image' =>  get_the_post_thumbnail_url( )
+                    );
+                    array_push($searchData[get_post_type()], $dataObject );
+            }
 
+            while($relatedEvents -> have_posts()){
+                $relatedEvents -> the_post(  );
+                array_push($searchData['event'], array(
+                    'id' => get_the_ID(  ),
+                    'title' => get_the_title(  ),
+                    'url' => get_the_permalink (),
+                    'type' => get_post_type()
+                ) );
+            }
+
+        }
+
+    }
+
+    // Remove duplicates
+
+    $searchData['professor'] = array_values(array_unique($searchData['professor'], SORT_REGULAR));
 
     return $searchData;
-
 }
 
 add_action('rest_api_init','custom_rest_config' )

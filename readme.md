@@ -51,3 +51,7 @@ On the campus archive page, Im presenting all campuses on a map using ACF Google
 A user can open the js powered search modal using the s key or clicking on search header icon, this provides a user with a text field that uses axios to fetch data from the wordpress Rest API as they type in, all defined in a js class.
 
 Registered a custom field to the Rest api response of a post to show the author name.
+
+- ### Js Custom WP Rest API route
+
+Defined a custom rest route to facilitate an advanced search which utilizes relations among different post types such as professors and programs. The endpoint also improves performance as it bundles only the required data by the frontend.
