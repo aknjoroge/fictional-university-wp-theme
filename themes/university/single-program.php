@@ -40,7 +40,7 @@ while(have_posts()){
 
 
 		<div class="col-md-12">
-			<?php the_content( ); ?>
+			<?php echo get_field('about'); ?>
 		</div>
 
 

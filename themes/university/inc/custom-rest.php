@@ -11,7 +11,7 @@ function custom_rest_config(){
 }
 
 function restHandler($query){
-    
+
     $searchTerm = $query['term'];
 
     $searchData = array(
@@ -86,48 +86,42 @@ function restHandler($query){
     }
 
     if(isset($searchData['program']) && !empty($searchData['program'])){
-
+        $programsMetaSearch = array('relation'=> 'OR' );
+        $eventMetaSearch = array(
+            array(
+                'key' => 'event_date',
+                'value' => $today,
+                'compare' => '>=',
+                'type' => 'NUMERIC'
+            )
+        );
 
         foreach($searchData['program'] as $singleProgram ){
+        
+            $metaQueryItem = array(
+                'key' => 'related_programs',
+                'value' => '"' . $singleProgram['id'] . '"',
+                'compare' => 'LIKE',
+                // 'type' => 'NUMERIC'
+            );
+            
+            array_push($programsMetaSearch, $metaQueryItem);
+            array_push($eventMetaSearch, $metaQueryItem);
+        }
 
-            $relatedProfessor = new WP_Query(
-                
-                array(
-                'post_type' =>'professor',
-                'posts_per_page' => -1,
-                'orderby' => 'title',
-                'meta_query' => array(
-                    array(
-                        'key' => 'related_programs',
-                        'value' => '"'. $singleProgram['id'] .'"',
-                        'compare' => 'LIKE',
-                        // 'type' => 'NUMERIC'
-                    )
-                )
-                    )
 
-                     
-        );
-            $relatedEvents = new WP_Query(
-                    array(
-                        'post_type' =>'event',
-                        // 'posts_per_page' => 2,
-                        'order' =>'ASC',
-                        'orderby' => 'meta_value_num' ,
-                        'meta_key' => 'event_date',
-                        'meta_type' => 'NUMERIC',
-                        'meta_query' => array(
-                            'key' => 'related_programs',
-                            'value' => '"'. $singleProgram['id'] .'"',
-                           'compare' => 'LIKE',
-                            // 'type' => 'NUMERIC'
-                        )
-                        
-                    )
+        $relatedProfessor = new WP_Query(           
+            array(
+            'post_type' =>'professor',
+            'posts_per_page' => -1,
+            'orderby' => 'title',
+            'meta_query' =>  $programsMetaSearch 
+            )
         );
 
-            while($relatedProfessor -> have_posts()){
-                $relatedProfessor -> the_post(  );
+
+                while($relatedProfessor -> have_posts()){
+                    $relatedProfessor -> the_post(  );
                     $dataObject = array(
                         'id' => get_the_ID(  ),
                         'title' => get_the_title(  ),
@@ -136,25 +130,39 @@ function restHandler($query){
                         'image' =>  get_the_post_thumbnail_url( )
                     );
                     array_push($searchData[get_post_type()], $dataObject );
-            }
+                }
 
-            while($relatedEvents -> have_posts()){
-                $relatedEvents -> the_post(  );
-                array_push($searchData['event'], array(
-                    'id' => get_the_ID(  ),
-                    'title' => get_the_title(  ),
-                    'url' => get_the_permalink (),
-                    'type' => get_post_type()
-                ) );
-            }
 
-        }
+                $relatedEvents = new WP_Query(
+                    array(
+                    'post_type' =>'event',
+                    // 'posts_per_page' => 2,
+                    'order' =>'ASC',
+                    'orderby' => 'meta_value_num' ,
+                    'meta_key' => 'event_date',
+                    'meta_type' => 'NUMERIC',
+                    'meta_query' =>  $eventMetaSearch
+                    )
+                );
+
+
+                while($relatedEvents -> have_posts()){
+                    $relatedEvents -> the_post(  );
+                    array_push($searchData['event'], array(
+                        'id' => get_the_ID(  ),
+                        'title' => get_the_title(  ),
+                        'url' => get_the_permalink (),
+                        'type' => get_post_type()
+                    ) );
+                }
+
 
     }
 
-    // Remove duplicates
-
     $searchData['professor'] = array_values(array_unique($searchData['professor'], SORT_REGULAR));
+    $searchData['event'] = array_values(array_unique($searchData['event'], SORT_REGULAR));
+    
+    wp_reset_postdata();
 
     return $searchData;
 }
