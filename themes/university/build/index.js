@@ -171,6 +171,8 @@ class Search {
     if (e) {
       e.preventDefault();
     }
+    this.populateContent("");
+    this.searchValue = null;
     this.searchField.value = "";
     this.searchModal.show();
     setTimeout(() => {
