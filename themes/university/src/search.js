@@ -81,34 +81,43 @@ class Search {
 
   async searchQuery(term) {
     try {
-      let searchPost = await axios({
+      // let searchPost = await axios({
+      //   method: "GET",
+      //   url: `${globalData.url}/wp-json/wp/v2/posts?search=${term}`,
+      // });
+      // let searchPages = await axios({
+      //   method: "GET",
+      //   url: `${globalData.url}/wp-json/wp/v2/pages?search=${term}`,
+      // });
+
+      let globalSearch = await axios({
         method: "GET",
-        url: `${globalData.url}/wp-json/wp/v2/posts?search=${term}`,
-      });
-      let searchPages = await axios({
-        method: "GET",
-        url: `${globalData.url}/wp-json/wp/v2/pages?search=${term}`,
+        url: `${globalData.url}/wp-json/university/v1/search?term=${term}`,
       });
 
-      if (searchPost.data && searchPages.data) {
-        let results = [...searchPages.data, ...searchPost.data];
+      // if (searchPost.data && searchPages.data) {
+      // let results = [...searchPages.data, ...searchPost.data];
+      if (globalSearch.data) {
+        let results = globalSearch.data;
 
-        if (results.length > 0) {
-          let content = `
+        let content = "";
+        let generalResults = [...results.page, ...results.post];
+        let program = results.program;
+        let professor = results.professor;
+        let campus = results.campus;
+        let event = results.event;
+
+        if (generalResults.length > 0) {
+          content += `
             <div  class="col-md-6  mt-2 ">
 						<div class="card">
 							<div class="card-body">
-
-								<h4>General information</h4>
-
-								<div>
+								<h4>General information</h4> <div>
 									<ul class="m-0">
-                                    ${results
+                                    ${generalResults
                                       .map(function (i) {
                                         return `<li> 
-                                        <a href="${i.link}"> ${
-                                          i.title?.rendered
-                                        }  </a>
+                                        <a href="${i.url}"> ${i.title}  </a>
                                          ${
                                            i.type == "post"
                                              ? ` By ${i.authorName} `
@@ -118,25 +127,130 @@ class Search {
                                       })
                                       .join("")}
 										
-									</ul>
-
-								</div>
-
-							</div>
-
-						</div>
-					</div>`;
-
-          this.populateContent(content);
+									</ul> </div> </div> </div> </div>`;
         } else {
-          this.populateContent(`
-              <div  class="col-md-12  mt-2 text-center ">
-
-             <p> No results found for the query </p>
-    
-              
-              </div>`);
+          content += `
+              <div  class="col-md-6   mt-2   ">
+              <div class="card">
+							<div class="card-body">
+              <h4>General information</h4>
+              <p> No results found for the query </p>
+              </div> </div> </div>`;
         }
+
+        if (program.length > 0) {
+          content += `
+            <div  class="col-md-6  mt-2 ">
+						<div class="card">
+							<div class="card-body">
+								<h4>Programs</h4> <div>
+									<ul class="m-0">
+                                    ${program
+                                      .map(function (i) {
+                                        return `<li> 
+                                        <a href="${i.url}"> ${i.title}  </a>
+                                          
+                                        </li>`;
+                                      })
+                                      .join("")}
+										
+									</ul> </div> </div> </div> </div>`;
+        } else {
+          content += `
+              <div  class="col-md-6   mt-2   ">
+              <div class="card">
+							<div class="card-body">
+              <h4>Programs</h4>
+              <p> No results found for the query </p>
+              </div> </div> </div>`;
+        }
+
+        if (professor.length > 0) {
+          content += `
+            <div  class="col-md-6  mt-2 ">
+						<div class="card">
+							<div class="card-body">
+								<h4>Professors</h4> <div>
+									<ul class="m-0">
+                                    ${professor
+                                      .map(function (i) {
+                                        return `<li> 
+                                        <a href="${i.url}"> ${i.title} 
+                                        <img style="height:60px" class="img-thumbnail img-fluid" src="${i.image}" alt="${i.title}" />
+                                        </a>
+                                          
+                                        </li>`;
+                                      })
+                                      .join("")}
+										
+									</ul> </div> </div> </div> </div>`;
+        } else {
+          content += `
+              <div  class="col-md-6   mt-2   ">
+              <div class="card">
+							<div class="card-body">
+              <h4>Professors</h4>
+              <p> No results found for the query </p>
+              </div> </div> </div>`;
+        }
+
+        if (campus.length > 0) {
+          content += `
+            <div  class="col-md-6  mt-2 ">
+						<div class="card">
+							<div class="card-body">
+								<h4>Campuses</h4> <div>
+									<ul class="m-0">
+                                    ${campus
+                                      .map(function (i) {
+                                        return `<li> 
+                                        <a href="${i.url}"> ${i.title} 
+                                        </a>
+                                          
+                                        </li>`;
+                                      })
+                                      .join("")}
+										
+									</ul> </div> </div> </div> </div>`;
+        } else {
+          content += `
+              <div  class="col-md-6   mt-2   ">
+              <div class="card">
+							<div class="card-body">
+              <h4>Campuses</h4>
+              <p> No results found for the query </p>
+              </div> </div> </div>`;
+        }
+
+        if (event.length > 0) {
+          content += `
+            <div  class="col-md-6  mt-2 ">
+						<div class="card">
+							<div class="card-body">
+								<h4>Events</h4> <div>
+									<ul class="m-0">
+                                    ${event
+                                      .map(function (i) {
+                                        return `<li> 
+                                        <a href="${i.url}"> ${i.title} 
+                                        </a>
+                                          
+                                        </li>`;
+                                      })
+                                      .join("")}
+										
+									</ul> </div> </div> </div> </div>`;
+        } else {
+          content += `
+              <div  class="col-md-6   mt-2   ">
+              <div class="card">
+							<div class="card-body">
+              <h4>Events</h4>
+              <p> No results found for the query </p>
+              </div> </div> </div>`;
+        }
+
+        this.populateContent(content);
       }
     } catch (error) {
       console.log("error", error);
