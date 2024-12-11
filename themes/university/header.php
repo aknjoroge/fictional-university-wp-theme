@@ -76,7 +76,7 @@ echo is_page_template( 'blank-page.php' );
 
 <a href="#" class="btn btn-primary float-left push-right">Login</a>
 <a href="#" class="mx-2 btn btn-info btn--dark-orange float-left">Sign Up</a>
-<span id="search-trigger" class="search-trigger js-search-trigger"><i class="text-white fa fa-search" aria-hidden="true"></i></span>
+<a href="<?php site_url('/search' ) ?>" id="search-trigger" class="search-trigger js-search-trigger"><i class="text-white fa fa-search" aria-hidden="true"></i></a>
             </div>
             </nav>
         </div>

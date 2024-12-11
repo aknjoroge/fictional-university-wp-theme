@@ -13,17 +13,42 @@ get_header();
 while(have_posts()){
 	the_post();
 
+ 
+function metaData(){
+	$eventDate = new DateTime(get_field('event_date'));
 
-	pageBanner( );
+	?>
+<div class="event-date">
+
+	<span class="month">
+		<?php echo $eventDate->format('M'); ?>
+	</span>
+	<span class="day">
+		<?php echo $eventDate->format('d'); ?>
+	</span>
+	<!-- <span><?php echo $eventDate->format('y'); ?></span> -->
+</div>
+
+<?php
+}
+
+	pageBanner( array(
+		'callback' => 'metaData',
+	));
 	?>
 
- 
+
 
 <div class="container mt-4">
 
 	<div class="row">
 
+
+
 		<div class="col-md-12">
+
+
+
 			<nav style="width: fit-content;" aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="<?php echo get_post_type_archive_link( 'event' ); ?>">
@@ -48,7 +73,7 @@ while(have_posts()){
 if($programs){
 	?>
 
-<div class="col-md-12">
+		<div class="col-md-12">
 			<hr>
 		</div>
 		<div class="col-md-12">
@@ -57,29 +82,29 @@ if($programs){
 
 			<div class="row mt-3">
 
-			<?php			
+				<?php			
 			foreach($programs as $program){
 				?>
-			<div class="col-md-4">
-				<a href="<?php echo get_the_permalink($program); ?>">
-					<div class="card mb-2">
-						<div class="card-body">
-							<h6 class="m-0 p-0">
-								<?php echo get_the_title( $program ); ?>
-							</h6>
+				<div class="col-md-4">
+					<a href="<?php echo get_the_permalink($program); ?>">
+						<div class="card mb-2">
+							<div class="card-body">
+								<h6 class="m-0 p-0">
+									<?php echo get_the_title( $program ); ?>
+								</h6>
+							</div>
 						</div>
-					</div>
-				</a>
-			</div>
-			<?php
+					</a>
+				</div>
+				<?php
 			}
 			?>
 
 			</div>
 
-			
+
 		</div>
-	<?php
+		<?php
 
 }
 		?>

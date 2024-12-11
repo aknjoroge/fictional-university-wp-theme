@@ -168,6 +168,9 @@ class Search {
     });
   }
   openSearchModal(e) {
+    if (e) {
+      e.preventDefault();
+    }
     this.searchField.value = "";
     this.searchModal.show();
     setTimeout(() => {
