@@ -3,6 +3,8 @@
 function post_types_cb(){
 
     register_post_type( 'event',  array(
+        'capability_type' => 'event',
+        'map_meta_cap' => true,
         'public'=>true,
         'labels' => array(
             'name'=>'Event',
@@ -23,6 +25,8 @@ function post_types_cb(){
     ) );
 
     register_post_type( 'program',  array(
+        'capability_type' => 'program',
+        'map_meta_cap' => true,
         'public'=>true,
         'labels' => array(
             'name'=>'Program',
@@ -42,6 +46,8 @@ function post_types_cb(){
 
 
     register_post_type( 'professor',  array(
+        'capability_type' => 'professor',
+        'map_meta_cap' => true,
         'public'=>true,
         'labels' => array(
             'name'=>'Professor',
@@ -58,6 +64,8 @@ function post_types_cb(){
 
 
     register_post_type( 'campus',  array(
+        'capability_type' => 'campu',
+        'map_meta_cap' => true,
         'public'=>true,
         'labels' => array(
             'name'=>'Campus',
