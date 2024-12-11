@@ -69,6 +69,17 @@ pageBanner(array(
 
 
 	}
+
+	if(!have_posts(  )){
+		 ?>
+
+<div class="col-md-12 text-center">
+	<h4>No results match that search</h4>
+</div>
+
+<?php
+
+	}
 	
 	?>
 

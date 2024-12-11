@@ -181,14 +181,7 @@ function restHandler($query){
                 }
 
 
-             
-
-           
-
-              
-
-
-
+            
 
     }
 
