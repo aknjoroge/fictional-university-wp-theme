@@ -72,10 +72,36 @@ echo is_page_template( 'blank-page.php' );
                 'walker'          => new wp_bootstrap_navwalker()
                 ));
                 ?>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center g-avatar-container">
 
-<a href="#" class="btn btn-primary float-left push-right">Login</a>
-<a href="#" class="mx-2 btn btn-info btn--dark-orange float-left">Sign Up</a>
+                <?php
+                
+                if(!is_user_logged_in(  )){
+                    ?>
+
+<a href="<?php echo wp_login_url();  ?>" class="btn btn-primary float-left push-right">Login</a>
+<a href="<?php echo wp_registration_url();  ?>" class="mx-2 btn btn-info btn--dark-orange float-left">Sign Up</a>
+
+                    <?php
+
+                }
+                else{
+
+                    ?>
+
+  
+<?php echo get_avatar(get_current_user_id(  )  ); ?>
+ 
+<a href="<?php echo wp_logout_url();  ?>" class="mx-2 btn btn-danger btn--dark-orange float-left">Log Out</a>
+
+ 
+                    <?php
+
+                }
+
+                ?>
+
+
 <a href="<?php site_url('/search' ) ?>" id="search-trigger" class="search-trigger js-search-trigger"><i class="text-white fa fa-search" aria-hidden="true"></i></a>
             </div>
             </nav>

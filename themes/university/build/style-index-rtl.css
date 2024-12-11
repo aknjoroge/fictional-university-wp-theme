@@ -269,6 +269,22 @@ a {
   color: #999;
 }
 
+.g-avatar-container img {
+  height: 30px;
+  width: auto;
+}
+
+.login h1 a {
+  background: none;
+  width: auto;
+  text-indent: 0;
+  height: auto;
+}
+
+body.login {
+  background: #faf0ca;
+}
+
 :root {
   --nav-active-link: #faf0ca;
 }

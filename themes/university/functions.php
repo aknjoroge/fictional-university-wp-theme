@@ -154,3 +154,57 @@ function update_rest_data(){
 }
 
 add_action( "rest_api_init","update_rest_data" );
+
+
+function customize_load(){
+    $user = wp_get_current_user();
+    if(count($user->roles) ==1 && $user->roles[0] == "subscriber"){
+        show_admin_bar( false );
+    }
+}
+
+add_action("wp_loaded" ,'customize_load' );
+
+function manage_admin(){
+    $user = wp_get_current_user();
+    if(count($user->roles) ==1 && $user->roles[0] == "subscriber"){
+
+        wp_redirect(site_url('/' ));
+        exit;
+        
+    }
+}
+
+add_action("admin_init" ,'manage_admin' );
+
+
+function custom_login_message(){
+    return get_bloginfo('name' );
+}
+
+
+add_filter( 'login_headertext','custom_login_message');
+
+function custom_login_headerurl(){
+    return site_url('/' );
+}
+
+add_filter( 'login_headerurl','custom_login_headerurl');
+
+
+function custom_login_site_html_link(){
+    return  '<a href="'. site_url('/') .' ">← Go Home </a>';
+}
+add_filter( 'login_site_html_link','custom_login_site_html_link');
+
+
+function custom_login_enqueue_scripts(){
+    wp_enqueue_style( 'custom-css', get_theme_file_uri('build/style-index.css'));
+
+}
+
+add_action('login_enqueue_scripts', 'custom_login_enqueue_scripts');
+
+
+
+ 

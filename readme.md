@@ -55,3 +55,15 @@ Registered a custom field to the Rest api response of a post to show the author 
 - ### Js Custom WP Rest API route
 
 Defined a custom rest route to facilitate an advanced search which utilizes relations among different post types such as professors and programs. The endpoint also improves performance as it bundles only the required data by the frontend.
+
+- ### Role management and custom post type permissions
+
+Managing roles using "members" and updated permissions types for custom post types where each post type has a unique capability type that can be used to assign permissions to different role
+
+For subscriber accounts, Im hidding the login top bar and blocking access to the backend dashboard
+
+- ### Updated Login page
+
+Added filters for the login header title, site html and header link,
+
+Loading the main css styles on the login page that allows for the customization of the header and body background
