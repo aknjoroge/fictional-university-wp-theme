@@ -76,7 +76,7 @@ pageBanner(
       <div style="height: auto;" class="mt-3 card note" data-id="<?php the_ID(  ); ?>">
         <div class="card-header d-flex justify-content-between align-items-center">
           <input type="text" class="form-control form-control-sm w-75 border-0 bg-white note-title"
-            placeholder="Note Title" value="<?php esc_attr(the_title( )); ?>" readonly />
+            placeholder="Note Title" value="<?php echo str_replace('Private: ','',esc_attr(get_the_title( ))) ; ?>" readonly />
           <div class="btn-group">
             <button class="btn btn-primary btn-sm edit-btn">Edit</button>
             <button class="btn btn-secondary btn-sm hidden cancel-btn">Cancel</button>

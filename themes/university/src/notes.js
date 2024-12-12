@@ -187,6 +187,10 @@ class Notes {
         });
         let { data } = response;
 
+        if (!data || !data.id) {
+          throw new Error(data);
+        }
+
         let markup = `
          <div style="height: auto;" class="mt-3 card note" data-id="${data.id}">
         <div class="card-header d-flex justify-content-between align-items-center">
@@ -204,16 +208,14 @@ class Notes {
         </div>
       </div>`;
 
-        this.noteContainer.insertAdjacentHTML("afterbegin", markup);
+        // this.noteContainer.insertAdjacentHTML("afterbegin", markup);
 
         const input = form.querySelector("input");
         const textarea = form.querySelector("textarea");
 
         input.value = "";
         textarea.value = "";
-        setTimeout(() => {
-          this.events();
-        }, 1000);
+        window.location.reload(true);
       } catch (error) {
         let { message } = error;
         alert(message);

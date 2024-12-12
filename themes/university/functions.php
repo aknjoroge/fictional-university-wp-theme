@@ -207,17 +207,27 @@ function custom_login_enqueue_scripts(){
 add_action('login_enqueue_scripts', 'custom_login_enqueue_scripts');
 
 
-function filter_post_data($data){
+function filter_post_data($data, $postarr){
+
+ 
+
 
   if($data['post_type']=='note' && $data['post_status'] !='trash' ){
+
+    if( count_user_posts( get_current_user_id(  ), 'note' )  > 4 && !$postarr['ID']){
+        die('You have reached the notes limit of your account');
+    }
+
     $data['post_status'] ='private';
     $data['post_title'] = esc_html( $data['post_title'] );
     $data['post_content'] = sanitize_textarea_field( $data['post_content'] );
 
   }
 
+
+
     return $data;
 
 }
 
- add_filter( "wp_insert_post_data", 'filter_post_data');
+ add_filter( "wp_insert_post_data", 'filter_post_data', 10,2 );

@@ -67,3 +67,9 @@ For subscriber accounts, Im hidding the login top bar and blocking access to the
 Added filters for the login header title, site html and header link,
 
 Loading the main css styles on the login page that allows for the customization of the header and body background
+
+- ### Notes Component
+
+Added note taking functionality where subscribers can create, update or delete private notes. The notes are sanitized and marks as private using the 'wp_insert_post_data' filter and a user can only have a total of 5 private notes
+
+Also the notes page can only be accessed by loggedin users
