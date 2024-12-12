@@ -37,14 +37,14 @@ pageBanner(
     <div class="col-md-6">
       <div class="card shadow">
         <div class="card-body">
-          <form>
+          <form id="note-form">
             <div class="form-group">
               <label for="note-title">Title</label>
-              <input type="text" class="form-control" id="note-title" aria-describedby="titleHelp">
+              <input type="text" class="form-control"  name="title" aria-describedby="titleHelp">
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Content</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control"  name="content" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Add</button>
           </form>
@@ -58,11 +58,12 @@ pageBanner(
 <div class="container mt-1">
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div class="col-md-10 " id="note-container">
       <?php
     
     $notes = new WP_Query(array(
       'post_type'=> 'note',
+      'author' => get_current_user_id()
 
     ));
 
@@ -84,11 +85,7 @@ pageBanner(
         </div>
 
         <div class="card-body">
-          
-
-        
             <textarea class="form-control   border-0 bg-white note-content" rows="5" readonly><?php echo esc_html(get_the_content()); ?></textarea>
-
           <button class="mt-3 btn btn-success btn-sm hidden save-btn">Save</button>
         </div>
       </div>

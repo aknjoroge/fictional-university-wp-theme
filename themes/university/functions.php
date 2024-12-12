@@ -207,5 +207,17 @@ function custom_login_enqueue_scripts(){
 add_action('login_enqueue_scripts', 'custom_login_enqueue_scripts');
 
 
+function filter_post_data($data){
 
- 
+  if($data['post_type']=='note' && $data['post_status'] !='trash' ){
+    $data['post_status'] ='private';
+    $data['post_title'] = esc_html( $data['post_title'] );
+    $data['post_content'] = sanitize_textarea_field( $data['post_content'] );
+
+  }
+
+    return $data;
+
+}
+
+ add_filter( "wp_insert_post_data", 'filter_post_data');
