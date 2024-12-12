@@ -126,6 +126,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+
 class Notes {
   constructor() {
     // Buttons
@@ -202,10 +204,27 @@ class Notes {
       noteContent.classList.add("border-0");
     }
   }
-  deleteNote(e) {
+  async deleteNote(e) {
     const clickedElement = e.target;
     const note = clickedElement.closest(".note");
     if (note) {
+      const id = note.dataset.id;
+      try {
+        let response = await (0,axios__WEBPACK_IMPORTED_MODULE_0__["default"])({
+          method: "DELETE",
+          url: `${globalData.url}/wp-json/wp/v2/note/${id}`,
+          headers: {
+            "X-WP-Nonce": globalData.nonce
+          }
+        });
+        note.remove();
+      } catch (error) {
+        let {
+          message
+        } = error;
+        alert(message);
+      }
+
       // note.data
     }
   }

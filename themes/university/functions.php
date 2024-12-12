@@ -125,7 +125,8 @@ function custom_style_imports(){
 
 
     wp_localize_script( 'custom-js', 'globalData', array(
-        'url' =>  get_site_url()
+        'url' =>  get_site_url(),
+        'nonce' => wp_create_nonce('wp_rest')
     ) );
 }
 

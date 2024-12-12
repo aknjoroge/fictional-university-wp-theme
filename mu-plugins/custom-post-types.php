@@ -99,6 +99,7 @@ function post_types_cb(){
         ),
         'menu_icon'=> 'dashicons-welcome-write-blog',
         'supports' => array('title', 'editor'),
+        'show_in_rest' => true
          
     ) );
 

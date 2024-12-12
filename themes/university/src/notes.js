@@ -1,3 +1,5 @@
+import axios from "axios";
+
 class Notes {
   constructor() {
     // Buttons
@@ -103,12 +105,29 @@ class Notes {
     }
   }
 
-  deleteNote(e) {
+  async deleteNote(e) {
     const clickedElement = e.target;
 
     const note = clickedElement.closest(".note");
 
     if (note) {
+      const id = note.dataset.id;
+
+      try {
+        let response = await axios({
+          method: "DELETE",
+          url: `${globalData.url}/wp-json/wp/v2/note/${id}`,
+          headers: {
+            "X-WP-Nonce": globalData.nonce,
+          },
+        });
+
+        note.remove();
+      } catch (error) {
+        let { message } = error;
+        alert(message);
+      }
+
       // note.data
     }
   }
