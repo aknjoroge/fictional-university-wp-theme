@@ -1,7 +1,6 @@
 <?php
-
 function custom_rest_config(){
- 
+
     register_rest_route( 'university/v1', 'search', array(
         'methods' => WP_REST_SERVER::READABLE,
         'callback' => 'restHandler'
