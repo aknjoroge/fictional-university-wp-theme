@@ -13,10 +13,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _maps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./maps */ "./src/maps.js");
 /* harmony import */ var _maps__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_maps__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search */ "./src/search.js");
+/* harmony import */ var _notes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./notes */ "./src/notes.js");
+
 
 
 
 new _search__WEBPACK_IMPORTED_MODULE_2__["default"]().events();
+new _notes__WEBPACK_IMPORTED_MODULE_3__["default"]().events();
 
 /***/ }),
 
@@ -109,6 +112,105 @@ $(document).ready(function () {
     var map = initMap($(this));
   });
 });
+
+/***/ }),
+
+/***/ "./src/notes.js":
+/*!**********************!*\
+  !*** ./src/notes.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+class Notes {
+  constructor() {
+    // Buttons
+    this.editBtns = document.querySelectorAll(".edit-btn");
+    this.deleteBtns = document.querySelectorAll(".delete-btn");
+    this.cancelBtns = document.querySelectorAll(".cancel-btn");
+    this.saveBtns = document.querySelectorAll(".save-btn");
+  }
+  events() {
+    this.editBtns.forEach(function (e) {
+      e.addEventListener("click", this.editNote.bind(this));
+    }.bind(this));
+    this.cancelBtns.forEach(function (e) {
+      e.addEventListener("click", this.cancelEdit.bind(this));
+    }.bind(this));
+    this.deleteBtns.forEach(function (e) {
+      e.addEventListener("click", this.deleteNote.bind(this));
+    }.bind(this));
+    this.saveBtns.forEach(function (e) {
+      e.addEventListener("click", this.saveNote.bind(this));
+    }.bind(this));
+  }
+  editNote(e) {
+    const clickedElement = e.target;
+    const note = clickedElement.closest(".note");
+    if (note) {
+      const editBtn = note.querySelector(".edit-btn");
+      const cancelBtn = note.querySelector(".cancel-btn");
+      const saveBtn = note.querySelector(".save-btn");
+      const noteTitle = note.querySelector(".note-title");
+      const noteContent = note.querySelector(".note-content");
+      editBtn.classList.add("hidden");
+      cancelBtn.classList.remove("hidden");
+      saveBtn.classList.remove("hidden");
+      noteTitle.removeAttribute("readonly");
+      noteTitle.classList.remove("border-0");
+      noteContent.removeAttribute("readonly");
+      noteContent.classList.remove("border-0");
+    }
+  }
+  cancelEdit(e) {
+    const clickedElement = e.target;
+    const note = clickedElement.closest(".note");
+    if (note) {
+      const editBtn = note.querySelector(".edit-btn");
+      const cancelBtn = note.querySelector(".cancel-btn");
+      const saveBtn = note.querySelector(".save-btn");
+      const noteTitle = note.querySelector(".note-title");
+      const noteContent = note.querySelector(".note-content");
+      editBtn.classList.remove("hidden");
+      cancelBtn.classList.add("hidden");
+      saveBtn.classList.add("hidden");
+      noteTitle.setAttribute("readonly", true);
+      noteTitle.classList.add("border-0");
+      noteContent.setAttribute("readonly", true);
+      noteContent.classList.add("border-0");
+    }
+  }
+  saveNote(e) {
+    const clickedElement = e.target;
+    const note = clickedElement.closest(".note");
+    if (note) {
+      const editBtn = note.querySelector(".edit-btn");
+      const cancelBtn = note.querySelector(".cancel-btn");
+      const saveBtn = note.querySelector(".save-btn");
+      const noteTitle = note.querySelector(".note-title");
+      const noteContent = note.querySelector(".note-content");
+      editBtn.classList.remove("hidden");
+      cancelBtn.classList.add("hidden");
+      saveBtn.classList.add("hidden");
+      noteTitle.setAttribute("readonly", true);
+      noteTitle.classList.add("border-0");
+      noteContent.setAttribute("readonly", true);
+      noteContent.classList.add("border-0");
+    }
+  }
+  deleteNote(e) {
+    const clickedElement = e.target;
+    const note = clickedElement.closest(".note");
+    if (note) {
+      // note.data
+    }
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Notes);
 
 /***/ }),
 

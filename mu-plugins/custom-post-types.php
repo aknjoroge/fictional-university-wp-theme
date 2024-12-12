@@ -83,6 +83,25 @@ function post_types_cb(){
         )
     ) );
 
+
+    register_post_type( 'note',  array(
+        'capability_type' => 'note',
+        'map_meta_cap' => true,
+        'public'=>false,
+        'show_ui' => true,
+        'labels' => array(
+            'name'=>'Note',
+            'singular_name'=>'Note',
+            'add_new'=>'Add note',
+            'add_new_item'=>'Add new note',
+            'edit_item'=>'Edit note',
+
+        ),
+        'menu_icon'=> 'dashicons-welcome-write-blog',
+        'supports' => array('title', 'editor'),
+         
+    ) );
+
 }
 
 
