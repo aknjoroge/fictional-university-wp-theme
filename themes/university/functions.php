@@ -151,6 +151,12 @@ function update_rest_data(){
             return  get_author_name(  );
         }
     ) );
+
+    register_rest_field( 'note', 'totalUserNotes', array(
+        'get_callback' => function (){
+            return  count_user_posts( get_current_user_id(  ), 'note' );
+        }
+    ) );
     
 }
 
