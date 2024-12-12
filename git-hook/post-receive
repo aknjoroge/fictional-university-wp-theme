@@ -1,0 +1,14 @@
+# Initialize a bare repo in remote server
+git init --bare
+
+# setup a post-receive hook
+git --work-tree=/home/user_name/techkey.co.ke/wp-content --git-dir=/home/user_name/repo_location checkout -f
+
+# add permission to the hook 
+chmod +x post-receive
+
+# Add origin to server
+git remote add origin ssh://user_name@techkey.co.ke/home/user_name/repo_location
+
+
+
