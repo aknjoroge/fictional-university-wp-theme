@@ -137,3 +137,19 @@
   height: 30px;
   width: auto;
 }
+
+.heart {
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  &-container {
+    display: flex;
+    justify-content: end;
+  }
+  color: gray;
+  &.active {
+    color: red;
+  }
+}

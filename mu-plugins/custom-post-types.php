@@ -103,6 +103,26 @@ function post_types_cb(){
          
     ) );
 
+
+    register_post_type( 'Like',  array(
+        // 'capability_type' => 'like',
+        // 'map_meta_cap' => true,
+        'public'=>true,
+        // 'show_ui' => true,
+        'labels' => array(
+            'name'=>'Like',
+            'singular_name'=>'Like',
+            'add_new'=>'Add like',
+            'add_new_item'=>'Add new like',
+            'edit_item'=>'Edit like',
+
+        ),
+        'menu_icon'=> 'dashicons-heart',
+        'supports' => array('title')
+        
+         
+    ) );
+
 }
 
 

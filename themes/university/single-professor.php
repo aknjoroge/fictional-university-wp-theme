@@ -33,7 +33,23 @@ while(have_posts()){
 
 
 		<div class="col-md-<?php echo $thumbnail ?  '8':  '12'; ?> pt-4">
-			<?php the_content( ); ?>
+		 
+		
+		 
+		
+	
+		<?php the_content( ); 
+		
+		$allLikes = new WP_Query(array(
+			
+		));
+		
+		?>
+		<div class="text-right heart-container ">
+		<span  class="heart badge badge-light active">	
+		<span class="mr-1">1</span><i class="fa fa-heart" aria-hidden="true"></i>
+	    </span>
+		</div>
 		</div>
 
 		<?php 
@@ -41,8 +57,6 @@ while(have_posts()){
 			?>
 				<div class="col-md-4">
 
-				 
-		 
 				 
 		 <img src="<?php echo $thumbnail; ?>" alt="<?php the_title();?>" class="img-thumbnail"/>
 	 </div>
