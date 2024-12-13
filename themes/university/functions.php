@@ -4,6 +4,7 @@
  require get_theme_file_path( '/inc/custom-rest.php' );
 
  require get_theme_file_path( '/inc/theme-functions.php' );
+ require get_theme_file_path( '/inc/like-rest-controller.php' );
 
 
 

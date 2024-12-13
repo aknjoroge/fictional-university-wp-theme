@@ -35,19 +35,48 @@ while(have_posts()){
 		<div class="col-md-<?php echo $thumbnail ?  '8':  '12'; ?> pt-4">
 		 
 		
-		 
-		
-	
 		<?php the_content( ); 
-		
+
+		$hasLiked = false;
+
 		$allLikes = new WP_Query(array(
-			
-		));
-		
+			'post_type'=> 'like',
+			'meta_query' => array(
+				array(
+					'key' => 'professor_id',
+					'compare' => '=',
+					'value' =>  get_the_ID()
+				)
+			)
+ 		));
+
+
+		if(is_user_logged_in(  )){
+
+			$userLike = new WP_Query(array(
+				'post_type'=> 'like',
+				'meta_query' => array(
+					array(
+						'key' => 'professor_id',
+						'value' => get_the_ID(),
+						'compare' => '=',
+						'type' => 'NUMERIC'
+					)
+				),
+				'author' => get_current_user_id()
+			));
+
+			if($userLike->found_posts){
+				$hasLiked = true;
+			}
+
+		}
+
+	 
 		?>
 		<div class="text-right heart-container ">
-		<span  class="heart badge badge-light active">	
-		<span class="mr-1">1</span><i class="fa fa-heart" aria-hidden="true"></i>
+		<span id="heart" data-status="<?php $hasLiked? 'active':'' ?> " data-id="<?php the_ID(); ?>" class="heart badge badge-light <?php echo $hasLiked? 'active':'' ?> ">	
+		<span class="mr-1"><?php echo $allLikes->found_posts; ?></span><i class="fa fa-heart" aria-hidden="true"></i>
 	    </span>
 		</div>
 		</div>
