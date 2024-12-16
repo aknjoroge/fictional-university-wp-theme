@@ -82,21 +82,14 @@ function like_rest_handler(){
         ));
         if($userLike -> have_posts(  )){
 
-             
-
             if( isset($userLike->post) && isset($userLike->post-> ID) ){
                 $data = wp_delete_post($userLike->post-> ID,false);
                 return $data->ID;
             }
 
-
             die("Post id not identified");
              
-
         }
-
-
-
 
         die("You have not liked this professor");
     }

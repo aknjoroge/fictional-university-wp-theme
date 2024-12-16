@@ -5,6 +5,10 @@ class Notes {
     this.endPoint = `${globalData.url}/wp-json/wp/v2/note`;
     this.noteForm = document.getElementById("note-form");
     this.noteContainer = document.getElementById("note-container");
+
+    if (this.noteContainer) {
+      this.events();
+    }
   }
 
   events() {

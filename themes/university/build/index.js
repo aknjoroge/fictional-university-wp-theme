@@ -14,12 +14,106 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _maps__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_maps__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search */ "./src/search.js");
 /* harmony import */ var _notes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./notes */ "./src/notes.js");
+/* harmony import */ var _like__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./like */ "./src/like.js");
+
 
 
 
 
 new _search__WEBPACK_IMPORTED_MODULE_2__["default"]().events();
-new _notes__WEBPACK_IMPORTED_MODULE_3__["default"]().events();
+new _notes__WEBPACK_IMPORTED_MODULE_3__["default"]();
+new _like__WEBPACK_IMPORTED_MODULE_4__["default"]();
+
+/***/ }),
+
+/***/ "./src/like.js":
+/*!*********************!*\
+  !*** ./src/like.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+
+class Like {
+  constructor() {
+    this.endPoint = `${globalData.url}/wp-json/university/v1/like`;
+    this.heart = document.getElementById("heart");
+    this.likeCount = document.getElementById("like-count");
+    if (this.heart) {
+      this.events();
+    }
+  }
+  events() {
+    this.heart.addEventListener("click", this.dispatcher.bind(this));
+  }
+  dispatcher() {
+    let status = this.heart.dataset.status;
+    let id = this.heart.dataset.id;
+    console.log("status", status);
+    if (status && status == "active") {
+      console.log("here");
+      this.unLikeProfessor(id);
+      return;
+    }
+    this.likeProfessor(id);
+  }
+  async likeProfessor(id) {
+    try {
+      let response = await (0,axios__WEBPACK_IMPORTED_MODULE_0__["default"])({
+        method: "POST",
+        data: {
+          id
+        },
+        url: `${this.endPoint}`,
+        headers: {
+          "X-WP-Nonce": globalData.nonce
+        }
+      });
+      this.heart.classList.add("active");
+      this.heart.setAttribute("data-status", "active");
+      let total = Number(this.likeCount.dataset.total);
+      total++;
+      this.likeCount.setAttribute("data-total", `${total}`);
+      this.likeCount.innerHTML = `${total}`;
+    } catch (error) {
+      let {
+        message
+      } = error;
+      alert(message);
+    }
+  }
+  async unLikeProfessor(id) {
+    try {
+      let response = await (0,axios__WEBPACK_IMPORTED_MODULE_0__["default"])({
+        method: "DELETE",
+        data: {
+          id
+        },
+        url: `${this.endPoint}`,
+        headers: {
+          "X-WP-Nonce": globalData.nonce
+        }
+      });
+      this.heart.classList.remove("active");
+      this.heart.setAttribute("data-status", "");
+      let total = Number(this.likeCount.dataset.total);
+      total--;
+      this.likeCount.setAttribute("data-total", `${total}`);
+      this.likeCount.innerHTML = `${total}`;
+    } catch (error) {
+      let {
+        message
+      } = error;
+      alert(message);
+    }
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Like);
 
 /***/ }),
 
@@ -133,6 +227,9 @@ class Notes {
     this.endPoint = `${globalData.url}/wp-json/wp/v2/note`;
     this.noteForm = document.getElementById("note-form");
     this.noteContainer = document.getElementById("note-container");
+    if (this.noteContainer) {
+      this.events();
+    }
   }
   events() {
     // Buttons
