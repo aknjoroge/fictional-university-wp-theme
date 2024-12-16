@@ -76,7 +76,7 @@ while(have_posts()){
 		?>
 		<div class="text-right heart-container ">
 		<span id="heart" data-status="<?php $hasLiked? 'active':'' ?> " data-id="<?php the_ID(); ?>" class="heart badge badge-light <?php echo $hasLiked? 'active':'' ?> ">	
-		<span class="mr-1"><?php echo $allLikes->found_posts; ?></span><i class="fa fa-heart" aria-hidden="true"></i>
+		<span id="like-count" class="mr-1"><?php echo $allLikes->found_posts; ?></span><i class="fa fa-heart" aria-hidden="true"></i>
 	    </span>
 		</div>
 		</div>

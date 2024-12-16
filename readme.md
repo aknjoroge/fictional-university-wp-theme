@@ -73,3 +73,9 @@ Loading the main css styles on the login page that allows for the customization 
 Added note taking functionality where subscribers can create, update or delete private notes. The notes are sanitized and marks as private using the 'wp_insert_post_data' filter and a user can only have a total of 5 private notes
 
 Also the notes page can only be accessed by loggedin users
+
+- ### Like Component & Custom REST API route
+
+Defined custom rest endpoints for liking and unliking a professor. This includes a POST route for creating a like post type and inserting a the professor ID in the a custom field called 'professor_id'. A user can then delete the like using a DELETE route provided.
+
+This feature is only available to loggein in users

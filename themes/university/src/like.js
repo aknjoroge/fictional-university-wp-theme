@@ -4,6 +4,7 @@ class Like {
     this.endPoint = `${globalData.url}/wp-json/wp/v2/note`;
 
     this.heart = document.getElementById("heart");
+    this.likeCount = document.getElementById("like-count");
   }
 
   events() {
