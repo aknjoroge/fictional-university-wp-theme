@@ -7,12 +7,10 @@ function like_rest_handler(){
         'callback' => 'createLike'
     )  );
 
-
     function authProtect($data){
         if(!is_user_logged_in(  ) || !get_current_user_id()){
             die("You need to be loggedin to like a professor");
         }
-    
         
         $id = $data['id'];
     
