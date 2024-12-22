@@ -22,7 +22,7 @@ class WordCountPlugin{
     add_action( 'admin_menu', array($this, 'admin_menu_handler'));
 
     // Plugin functionality
-    add_filter( 'the_content', array($this, 'word_count_functionality') );
+    add_filter( 'the_content', array($this, 'content_filter') );
    }
 
    function register_word_count_settings(){
@@ -125,25 +125,56 @@ class WordCountPlugin{
     <?php
    }
 
-   function word_count_functionality($content){
+   function content_filter($content){
 
 
    // Check if any plugin option is active and is a single blog    
     if(is_main_query(  ) && is_single(  ) && get_post_type(  ) == 'post' && (get_option( 'wcp_word_count', 'on' ) || get_option( 'wcp_character_count', 'on' )  || get_option( 'wcp_read_count', 'on' ) ) ){
-        $title = '<h5> '.get_option( 'wcp_headline' ).' </h5>';
-        if(get_option( 'wcp_location','0' )){
-            $content = $title.'<hr/>'. $content;
-        }else{
-            $content = $content .'<hr/>'.$title;
-
-        }
-
-        return $content;
+       return $this -> word_count_functionality($content);
+     
     }
 
     return $content;
 
    }
+
+   function word_count_functionality($content){
+
+
+    $title = '<h5> '.get_option( 'wcp_headline' ).' </h5>';
+    $markup = '';
+
+    if(get_option( 'wcp_word_count', 'on' ) || get_option( 'wcp_read_count', 'on' ) ){
+        $total_words = str_word_count(strip_tags($content));
+
+    }
+
+    if(get_option( 'wcp_word_count', 'on' ) ){
+        $markup = 'This post has' .' ' .$total_words .' words <br/>';
+    }
+
+    if(get_option( 'wcp_character_count', 'on' ) ){
+        $total_length = strlen($content);
+        $markup = $markup .'This post has' .' ' .$total_length .' characters </br>';
+    }
+
+    if(get_option( 'wcp_read_count', 'on' ) ){
+        $reading_time =  round($total_words/225);
+        $markup = $markup. 'This post will take' .' ' .$reading_time .' min(s) to read';
+    }
+    
+
+    if(get_option( 'wcp_location','0' )){
+        $content = $title . $markup . '<hr/>'. $content;
+    }else{
+        $content = $content .'<hr/>'.$title .$markup;
+
+    }
+
+    return $content;
+
+   }
+
 
 
 }
