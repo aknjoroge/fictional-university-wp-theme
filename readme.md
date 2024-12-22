@@ -79,3 +79,8 @@ Also the notes page can only be accessed by loggedin users
 Defined custom rest endpoints for liking and unliking a professor. This includes a POST route for creating a like post type and inserting a the professor ID in the a custom field called 'professor_id'. A user can then delete the like using a DELETE route provided.
 
 This feature is only available to loggein in users
+
+- ### Plugin development: Word Count
+
+Created a plugin that counts words in a single blog, this is by adding a filter to the content hook.
+I have also added a setting page to activate / deactivate the plugin functionalities and section title, the values are stored in options table in the database

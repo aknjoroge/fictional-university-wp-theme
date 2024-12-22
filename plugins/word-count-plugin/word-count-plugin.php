@@ -11,18 +11,8 @@ Author URI: https://aknjoroge.techkey.co.ke/
 $word_count_plugin_slug ='word-count-settings-page';
 
 
-// function content_filter($content){
-//     if(get_post_type(  ) == 'event'){
-//         return $content .'Custom plugin filtering the event content';    
-//     }
-
-//     if( is_single() && is_main_query() ){
-//         return $content .'Single blog content';
-//     }
-//     return  $content;
-// }
-// add_filter( 'the_content', 'content_filter' );
-
+ 
+ 
 class WordCountPlugin{
    function __construct(){
     // Register plugin settings
@@ -30,6 +20,9 @@ class WordCountPlugin{
 
     // Add menu link in settings 
     add_action( 'admin_menu', array($this, 'admin_menu_handler'));
+
+    // Plugin functionality
+    add_filter( 'the_content', array($this, 'word_count_functionality') );
    }
 
    function register_word_count_settings(){
@@ -52,20 +45,20 @@ class WordCountPlugin{
 
     register_setting(  'wordcountplugin', 'wcp_headline', array(
         'sanitize_callback' => 'sanitize_text_field',
-        'default' => '0'
+        'default' => 'Post statistics'
     ) );
 
     register_setting(  'wordcountplugin', 'wcp_word_count', array(
         'sanitize_callback' => 'sanitize_text_field',
-        'default' => '0'
+        'default' => 'on'
     ) );
     register_setting(  'wordcountplugin', 'wcp_character_count', array(
         'sanitize_callback' => 'sanitize_text_field',
-        'default' => '0'
+        'default' => 'on'
     ) );
     register_setting(  'wordcountplugin', 'wcp_read_count', array(
         'sanitize_callback' => 'sanitize_text_field',
-        'default' => '0'
+        'default' => 'on'
     ) );
 
    }
@@ -99,8 +92,6 @@ class WordCountPlugin{
 
     function custom_sanitize_function($input){
 
-       
-
         if($input !='1' && $input !='0'){
             add_settings_error( 'wcp_location','wcp_location_error', 'Invalid display location value' );
             return  get_option('wcp_location');
@@ -132,6 +123,26 @@ class WordCountPlugin{
     </form>
 </div>
     <?php
+   }
+
+   function word_count_functionality($content){
+
+
+   // Check if any plugin option is active and is a single blog    
+    if(is_main_query(  ) && is_single(  ) && get_post_type(  ) == 'post' && (get_option( 'wcp_word_count', 'on' ) || get_option( 'wcp_character_count', 'on' )  || get_option( 'wcp_read_count', 'on' ) ) ){
+        $title = '<h5> '.get_option( 'wcp_headline' ).' </h5>';
+        if(get_option( 'wcp_location','0' )){
+            $content = $title.'<hr/>'. $content;
+        }else{
+            $content = $content .'<hr/>'.$title;
+
+        }
+
+        return $content;
+    }
+
+    return $content;
+
    }
 
 
