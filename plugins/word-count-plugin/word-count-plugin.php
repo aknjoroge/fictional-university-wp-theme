@@ -7,6 +7,7 @@ Version: 1.0.0
 Author: Aknjoroge
 Author URI: https://aknjoroge.techkey.co.ke/ 
 */
+if ( !defined('ABSPATH') ) exit;
 
 $word_count_plugin_slug ='word-count-settings-page';
 
