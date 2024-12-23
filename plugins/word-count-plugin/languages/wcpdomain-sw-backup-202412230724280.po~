@@ -1,0 +1,84 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Word Count Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-23 07:10+0000\n"
+"PO-Revision-Date: 2024-12-23 07:22+0000\n"
+"Last-Translator: \n"
+"Language-Team: Swahili\n"
+"Language: sw\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.14; wp-6.5.5\n"
+"X-Domain: wcpdomain"
+
+#. Description of the plugin
+msgid "A simple word count plugin"
+msgstr "Programu-jalizi rahisi ya kuhesabu maneno"
+
+#. Author of the plugin
+msgid "Aknjoroge"
+msgstr ""
+
+#: word-count-plugin.php:44
+msgid "Character Count"
+msgstr "Hesabu ya Wahusika"
+
+#: word-count-plugin.php:165
+msgid "characters"
+msgstr "characters"
+
+#: word-count-plugin.php:41
+msgid "Display Location"
+msgstr "Mahali pa Kuonyesha"
+
+#: word-count-plugin.php:42
+msgid "Headline Text"
+msgstr "Maandishi ya Kichwa"
+
+#. Author URI of the plugin
+msgid "https://aknjoroge.techkey.co.ke/"
+msgstr ""
+
+#: word-count-plugin.php:170
+msgid "min(s) to read"
+msgstr ""
+
+#: word-count-plugin.php:151
+msgid "Post statistics."
+msgstr ""
+
+#: word-count-plugin.php:45
+msgid "Read Time"
+msgstr ""
+
+#: word-count-plugin.php:160 word-count-plugin.php:165
+msgid "This post has"
+msgstr ""
+
+#: word-count-plugin.php:170
+msgid "This post will take"
+msgstr ""
+
+#: word-count-plugin.php:43
+msgid "Word Count"
+msgstr ""
+
+#: word-count-plugin.php:114
+msgid "Word count"
+msgstr ""
+
+#. Name of the plugin
+msgid "Word Count Plugin"
+msgstr ""
+
+#: word-count-plugin.php:122
+msgid "Word count settings"
+msgstr ""
+
+#: word-count-plugin.php:160
+msgid "words"
+msgstr ""

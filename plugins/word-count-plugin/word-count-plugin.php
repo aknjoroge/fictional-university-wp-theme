@@ -6,6 +6,9 @@ Description: A simple word count plugin
 Version: 1.0.0
 Author: Aknjoroge
 Author URI: https://aknjoroge.techkey.co.ke/ 
+Text Domain: wcpdomain
+Domain Path: /languages
+
 */
 if ( !defined('ABSPATH') ) exit;
 
@@ -24,6 +27,9 @@ class WordCountPlugin{
 
     // Plugin functionality
     add_filter( 'the_content', array($this, 'content_filter') );
+
+    // Load translation
+    add_action( 'init', array($this, 'load_languages') );
    }
 
    function register_word_count_settings(){
@@ -32,11 +38,11 @@ class WordCountPlugin{
     add_settings_section( 'wcp_section_2', '<hr/>', array($this, 'section_1_content'), $word_count_plugin_slug, array('sectiontitle'=> 'Secondary settings') );
 
     // Add fields to the section
-    add_settings_field( 'wcp_location', 'Display Location', array($this,'wcp_location_handler'), $word_count_plugin_slug, 'wcp_section_1');
-    add_settings_field( 'wcp_headline', 'Headline Text', array($this,'wcp_headline_handler'), $word_count_plugin_slug, 'wcp_section_1');
-    add_settings_field( 'wcp_word_count', 'Word Count', array($this,'wcp_checkbox_handler'), $word_count_plugin_slug, 'wcp_section_2', array('fieldName'=> 'wcp_word_count'));
-    add_settings_field( 'wcp_character_count', 'Character Count', array($this,'wcp_checkbox_handler'), $word_count_plugin_slug, 'wcp_section_2', array('fieldName'=> 'wcp_character_count'));
-    add_settings_field( 'wcp_read_count', 'Read Time', array($this,'wcp_checkbox_handler'), $word_count_plugin_slug, 'wcp_section_2',array('fieldName'=> 'wcp_read_count'));
+    add_settings_field( 'wcp_location', esc_html__( 'Display Location', 'wcpdomain' ), array($this,'wcp_location_handler'), $word_count_plugin_slug, 'wcp_section_1');
+    add_settings_field( 'wcp_headline', esc_html__( 'Headline Text', 'wcpdomain' ), array($this,'wcp_headline_handler'), $word_count_plugin_slug, 'wcp_section_1');
+    add_settings_field( 'wcp_word_count', esc_html__( 'Word Count', 'wcpdomain' ), array($this,'wcp_checkbox_handler'), $word_count_plugin_slug, 'wcp_section_2', array('fieldName'=> 'wcp_word_count'));
+    add_settings_field( 'wcp_character_count', esc_html__( 'Character Count', 'wcpdomain' ), array($this,'wcp_checkbox_handler'), $word_count_plugin_slug, 'wcp_section_2', array('fieldName'=> 'wcp_character_count'));
+    add_settings_field( 'wcp_read_count', esc_html__( 'Read Time', 'wcpdomain' ) , array($this,'wcp_checkbox_handler'), $word_count_plugin_slug, 'wcp_section_2',array('fieldName'=> 'wcp_read_count'));
 
     // Register fields to settings
     register_setting(  'wordcountplugin', 'wcp_location', array(
@@ -105,7 +111,7 @@ class WordCountPlugin{
 
    function admin_menu_handler(){
     // Register menu link
-    add_options_page( 'Word Count Settings', 'Word count', 'manage_options', $word_count_plugin_slug, array($this, 'menu_link_markup_handler') );
+    add_options_page( 'Word Count Settings', esc_html__('Word count','wcpdomain'), 'manage_options', $word_count_plugin_slug, array($this, 'menu_link_markup_handler') );
    }
 
     
@@ -113,7 +119,7 @@ class WordCountPlugin{
    function menu_link_markup_handler(){
     ?>
 <div class="wrap">
-<h1>Word count settings</h1>
+<h1> <?php echo esc_html__('Word count settings','wcpdomain'); ?> </h1>
     <form action="options.php" method="POST">
         <?php 
         
@@ -142,7 +148,7 @@ class WordCountPlugin{
    function word_count_functionality($content){
 
 
-    $title = '<h5> '.get_option( 'wcp_headline' ).' </h5>';
+    $title = '<h5> '. esc_html__(get_option( 'wcp_headline'),'wcpdomain' ) .' </h5>';
     $markup = '';
 
     if(get_option( 'wcp_word_count', 'on' ) || get_option( 'wcp_read_count', 'on' ) ){
@@ -151,17 +157,17 @@ class WordCountPlugin{
     }
 
     if(get_option( 'wcp_word_count', 'on' ) ){
-        $markup = 'This post has' .' ' .$total_words .' words <br/>';
+        $markup =  esc_html__('This post has','wcpdomain') .' ' .$total_words .' '. esc_html__('words','wcpdomain') .' <br/>';
     }
 
     if(get_option( 'wcp_character_count', 'on' ) ){
         $total_length = strlen($content);
-        $markup = $markup .'This post has' .' ' .$total_length .' characters </br>';
+        $markup = $markup .esc_html__('This post has','wcpdomain') .' ' .$total_length .' '. esc_html__('characters','wcpdomain') .'</br>';
     }
 
     if(get_option( 'wcp_read_count', 'on' ) ){
         $reading_time =  round($total_words/225);
-        $markup = $markup. 'This post will take' .' ' .$reading_time .' min(s) to read';
+        $markup = $markup. esc_html__('This post will take','wcpdomain') .' ' .$reading_time .' '. esc_html__( 'min(s) to read', 'wcpdomain' );
     }
     
 
@@ -176,6 +182,9 @@ class WordCountPlugin{
 
    }
 
+   function load_languages(){
+    load_plugin_textdomain( 'wcpdomain', false, dirname( plugin_basename( __FILE__)) . '/languages' );
+   }
 
 
 }
